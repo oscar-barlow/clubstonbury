@@ -20,7 +20,9 @@ Deno.test('administrator guide keeps timing optional and explains spreadsheet ID
   assert.match(source, /Excel/iu);
   assert.match(source, /Google Sheets/iu);
   assert.match(source, /RANDBETWEEN\(0,2147483647\)/u);
+  assert.match(source, /https:\/\/clubstonbury\.onrender\.com\/demo/u);
   assert.doesNotMatch(source, /Do not reorder/iu);
+  assert.doesNotMatch(source, /Keep the seed/iu);
 });
 
 Deno.test('algorithm guide explains randomised preference-order allocation in plain language', async () => {

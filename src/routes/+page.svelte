@@ -18,7 +18,7 @@
     <div class="hero-copy">
       <p class="eyebrow">After-school club allocation</p>
       <h1>Clubstonbury</h1>
-      <p class="lede">Choose 3 clubs for your child and enter the lottery. The Clubstonbury algorithm allocates places fairly. Everyone who applies before the deadline is treated equally.</p>
+      <p class="lede">Families choose up to three clubs for their child and enter the lottery. The Clubstonbury algorithm allocates places fairly. Everyone who applies before the deadline is treated equally.</p>
       <a class="button primary" href="/allocate">Start an allocation <span aria-hidden="true">→</span></a>
     </div>
     <div class="festival-scene" aria-hidden="true">
@@ -51,7 +51,7 @@
   <section class="term-timeline page-width" aria-labelledby="timeline-heading">
     <div class="timeline-heading">
       <h2 id="timeline-heading">5 easy steps</h2>
-      <p>Use the survey and spreadsheet tools your school already has. Families can submit their preferences through Google Forms or SurveyMonkey, then Clubstonbury reads the CSV export. No new account, platform or integration is needed.</p>
+      <p>Schools can use the survey and spreadsheet tools they already have. Families can submit their preferences through Google Forms or SurveyMonkey, then Clubstonbury reads the CSV export. No new account, platform or integration is needed.</p>
     </div>
     <ol class="timeline-list">
       <li><span>01</span><h3>Create and share the form</h3><p>Share the preferences form with every eligible family at the same time.</p></li>
@@ -85,7 +85,7 @@
   <section class="fairness-band">
     <div class="page-width fairness-inner">
       <div><p class="eyebrow">A practical alternative</p><h2>Free, fair and private, without another school platform.</h2></div>
-      <p>Keep the forms and spreadsheets you already use. Clubstonbury takes a CSV, runs locally in the browser and gives you an allocation archive to bring back into your records. No account, subscription or integration is required.</p>
+      <p>Schools keep the forms and spreadsheets they already use. Clubstonbury takes a CSV, runs locally in the browser and produces an allocation archive for the school’s records. No account, subscription or integration is required.</p>
     </div>
   </section>
 

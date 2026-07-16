@@ -355,6 +355,10 @@
               Google Forms and SurveyMonkey both export responses to CSV. Build one response per
               child with:
             </p>
+            <p>
+              <strong>See an example:</strong> download the fake applications and capacities from
+              <a href="https://clubstonbury.onrender.com/demo">clubstonbury.onrender.com/demo</a>.
+            </p>
             <ul>
               <li>the child's name and a parent contact field;</li>
               <li><strong>first club choice</strong> (required);</li>
@@ -447,7 +451,7 @@
             <p class="eyebrow">Prepare, run, reconcile</p>
             <h1>From CSV to offers</h1>
           </div>
-          <div class="badge">Keep the seed<br />with your audit record</div>
+          <div class="badge">Seed included in<br />the ZIP filename</div>
         </header>
         <div class="page-two-grid">
           <section class="panel">
@@ -491,10 +495,6 @@
                 <strong>Review totals.</strong> Check child count, capacity and each club row.
               </li>
               <li>
-                <strong>Keep the seed.</strong> Record the generated seed. It lets you rerun the same
-                allocation if anybody questions the result.
-              </li>
-              <li>
                 <strong>Run the lottery.</strong> Check allocations, unallocated children and
                 waiting lists.
               </li>
@@ -504,10 +504,10 @@
               </li>
             </ol>
             <div class="callout small">
-              <strong>Reproducibility:</strong> the same prepared applications CSV, capacities, seed
-              and algorithm version reproduce the same result. The ZIP manifest records these
-              details and a source-file hash. If a result is challenged, rerun the retained inputs
-              and compare the output to show that the allocation has not changed.
+              <strong>Reproducibility:</strong> the ZIP filename contains the seed, and its manifest
+              records the capacities, algorithm version and a source-file hash. If a result is
+              challenged, use the retained inputs and that seed to rerun the allocation and compare
+              the output.
             </div>
           </section>
           <div class="closing-stack">

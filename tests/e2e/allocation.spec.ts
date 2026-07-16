@@ -25,6 +25,10 @@ test('home-to-download workflow creates the expected timestamped ZIP', async ({ 
   })).toBeVisible();
   await expect(page.getByText(/important part of the school experience/u)).toBeVisible();
   await expect(page.getByText(/school staff to manage the rush/u)).toBeVisible();
+  await expect(
+    page.locator('.hero').getByText(/Families choose up to three clubs for their child/u),
+  )
+    .toBeVisible();
   expect(await page.locator('#principles h3').allTextContents()).toEqual([
     'Families get choice',
     'Rankings matter',
@@ -52,7 +56,14 @@ test('home-to-download workflow creates the expected timestamped ZIP', async ({ 
   await expect(page.getByRole('heading', {
     name: 'Free, fair and private, without another school platform.',
   })).toBeVisible();
+  await expect(
+    page.getByText(/Schools can use the survey and spreadsheet tools they already have/u),
+  )
+    .toBeVisible();
+  await expect(page.getByText(/produces an allocation archive for the school’s records/u))
+    .toBeVisible();
   await expect(page.getByText(/No new account, platform or integration is needed/u)).toBeVisible();
+  await expect(page.getByText(/Choose 3 clubs for your child/u)).toHaveCount(0);
   await expect(page.getByRole('link', { name: 'Try it with demo data' })).toBeVisible();
   await expect(page.locator('.final-cta').getByRole('link', { name: 'Start an allocation' }))
     .toBeVisible();
