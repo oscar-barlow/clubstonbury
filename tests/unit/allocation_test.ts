@@ -64,12 +64,12 @@ Deno.test('children receive the highest-ranked available choice in each round', 
   const one: Application[] = [{
     id: 'a',
     timestamp: '2026-01-01',
-    choices: ['Full', 'Open', 'Backup'],
+    choices: ['Full', 'Open', 'Third'],
   }];
   const result = await runAllocation(
-    input({ applications: one, capacities: { Full: 0, Open: 1, Backup: 1 } }),
+    input({ applications: one, capacities: { Full: 0, Open: 1, Third: 1 } }),
   );
-  assert.deepEqual(result.allocations[0].clubs, ['Open', 'Backup']);
+  assert.deepEqual(result.allocations[0].clubs, ['Open', 'Third']);
   assert.deepEqual(result.events.map((event) => event.round), [1, 2]);
 });
 

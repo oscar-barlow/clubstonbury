@@ -10,6 +10,7 @@
       Clubstonbury processes your CSV entirely inside this browser. There are no uploads, accounts,
       cookies, analytics or tracking. After the app has been cached, you can work offline.
     </p>
+    <a href="/privacy">Read how privacy by design works</a>
   </div>
 </aside>
 
@@ -18,6 +19,7 @@
   .shield { display: grid; place-items: center; width: 36px; aspect-ratio: 1; background: var(--ink); color: white; font-weight: 900; clip-path: polygon(50% 0, 92% 17%, 83% 73%, 50% 100%, 17% 73%, 8% 17%); }
   h2 { font-size: clamp(1.2rem, 3vw, 1.55rem); margin: 0 0 .3rem; }
   p { margin: 0; max-width: 70ch; }
+  a { display: inline-block; margin-top: .45rem; font-weight: 800; }
   .compact { padding: 1rem; box-shadow: 3px 3px 0 var(--ink); }
   .compact h2 { font-size: 1.05rem; }
   .compact p { font-size: .9rem; }

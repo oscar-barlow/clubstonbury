@@ -27,11 +27,15 @@ body {
   min-width: 320px;
   line-height: 1.55;
 }
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font: inherit;
   letter-spacing: 0;
 }
-button, a {
+button,
+a {
   -webkit-tap-highlight-color: transparent;
 }
 a {
@@ -95,12 +99,12 @@ a {
   height: 15px;
   background: var(--blue);
 }
-nav {
+.site-header nav {
   display: flex;
   align-items: center;
   gap: clamp(0.8rem, 3vw, 2rem);
 }
-nav a {
+.site-header nav a {
   font-weight: 750;
   text-decoration: none;
 }
@@ -136,7 +140,10 @@ nav a {
   font-size: 0.78rem;
   letter-spacing: 0.11em;
 }
-h1, h2, h3, p {
+h1,
+h2,
+h3,
+p {
   overflow-wrap: anywhere;
 }
 h1 {
@@ -416,19 +423,47 @@ h1 {
   background: var(--yellow);
   border-top: 2px solid var(--ink);
   padding: 2rem clamp(1rem, 4vw, 4rem);
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(180px, 0.8fr) minmax(300px, 1.2fr) minmax(220px, 0.8fr);
+  align-items: center;
   justify-content: space-between;
   gap: 2rem;
 }
-.site-footer div {
+.site-footer > div {
   display: flex;
   flex-direction: column;
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem 1.35rem;
+}
+.footer-links a {
+  font-weight: 800;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.github-link img {
+  width: 27px;
+  height: 27px;
+  object-fit: contain;
 }
 .site-footer p {
   display: flex;
   gap: 0.4rem;
   margin: 0;
   align-items: center;
+}
+.footer-meta {
+  justify-self: end;
+  max-width: 300px;
 }
 /* Allocation workflow */
 .tool-main {
@@ -550,7 +585,10 @@ h1 {
 .stat.green {
   border-color: var(--green);
 }
-.notice, .error-box, .success-box, .stale-box {
+.notice,
+.error-box,
+.success-box,
+.stale-box {
   padding: 1rem;
   border: 2px solid var(--ink);
   margin: 1rem 0;
@@ -600,7 +638,8 @@ table {
   width: 100%;
   border-collapse: collapse;
 }
-th, td {
+th,
+td {
   text-align: left;
   padding: 0.7rem 0.8rem;
   border-bottom: 1px solid var(--line);
@@ -610,7 +649,8 @@ th {
   background: #e7efed;
   font-size: 0.86rem;
 }
-td.numeric, th.numeric {
+td.numeric,
+th.numeric {
   text-align: right;
 }
 tr:last-child td {
@@ -627,10 +667,14 @@ tr:last-child td {
   display: grid;
   gap: 0.35rem;
 }
-.field label, .field-label {
+.field label,
+.field-label {
   font-weight: 800;
 }
-.field input, .field select, .field textarea, input.capacity {
+.field input,
+.field select,
+.field textarea,
+input.capacity {
   width: 100%;
   min-height: 44px;
   padding: 0.55rem 0.65rem;
@@ -752,7 +796,7 @@ tr:last-child td {
   .brand {
     font-size: 1rem;
   }
-  nav a:first-child {
+  .site-header nav a:first-child {
     display: none;
   }
   .nav-action {
@@ -783,34 +827,53 @@ tr:last-child td {
   .process {
     padding-block: 4rem;
   }
-  .section-heading, .fairness-inner {
+  .section-heading,
+  .fairness-inner {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
   .process-list {
     grid-template-columns: 1fr;
   }
-  .process-list li, .process-list li:nth-child(even) {
+  .process-list li,
+  .process-list li:nth-child(even) {
     border-right: 0;
     padding: 1.5rem 0;
   }
-  .final-cta, .site-footer {
+  .final-cta {
     align-items: flex-start;
     flex-direction: column;
   }
-  .stats-grid, .review-grid, .result-band {
+  .site-footer {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 1.25rem;
+  }
+  .footer-links {
+    justify-content: flex-start;
+  }
+  .footer-meta {
+    justify-self: start;
+  }
+  .stats-grid,
+  .review-grid,
+  .result-band {
     grid-template-columns: repeat(2, 1fr);
   }
   .capacity-actions {
     grid-template-columns: 1fr;
   }
-  .seed-row, .field-row {
+  .seed-row,
+  .field-row {
     grid-template-columns: 1fr;
   }
   .capacity-table thead {
     display: none;
   }
-  .capacity-table, .capacity-table tbody, .capacity-table tr, .capacity-table td {
+  .capacity-table,
+  .capacity-table tbody,
+  .capacity-table tr,
+  .capacity-table td {
     display: block;
     width: 100%;
   }
@@ -836,7 +899,9 @@ tr:last-child td {
   .hero h1 {
     font-size: 2.75rem;
   }
-  .stats-grid, .review-grid, .result-band {
+  .stats-grid,
+  .review-grid,
+  .result-band {
     grid-template-columns: 1fr;
   }
   .result-band .stat {
@@ -848,7 +913,9 @@ tr:last-child td {
   html {
     scroll-behavior: auto;
   }
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
   }
