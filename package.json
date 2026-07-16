@@ -1,0 +1,22 @@
+{
+  "name": "clubstonbury",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@sveltejs/adapter-static": "latest",
+    "@sveltejs/kit": "latest",
+    "@sveltejs/vite-plugin-svelte": "latest",
+    "fflate": "latest",
+    "papaparse": "latest",
+    "svelte": "latest",
+    "vite": "latest"
+  },
+  "devDependencies": {
+    "@playwright/test": "latest",
+    "@types/node": "^26.1.1",
+    "@types/papaparse": "latest",
+    "svelte-check": "latest",
+    "typescript": "latest"
+  }
+}

@@ -1,0 +1,19 @@
+id,timestamp,choice_1,choice_2,choice_3
+demo_7f3a,2026-09-01T08:14:00Z,Astronomy,Robotics,Nature Lab
+demo_19bc,2026-09-01T09:42:00Z,Robotics,Astronomy,Orchestra
+demo_a821,2026-09-02T15:06:00Z,Orchestra,Cookery and Baking,
+demo_5de0,2026-09-03T07:51:00Z,Skateboarding,Nature Lab,Astronomy
+demo_c447,2026-09-03T18:20:00Z,Nature Lab,Robotics,
+demo_02fa,2026-09-04T11:33:00Z,Cookery and Baking,Orchestra,Nature Lab
+demo_b638,2026-09-05T13:09:00Z,Astronomy,Orchestra,
+demo_41e9,2026-09-06T08:02:00Z,Robotics,Skateboarding,Astronomy
+demo_d250,2026-09-06T16:47:00Z,Orchestra,Nature Lab,Cookery and Baking
+demo_8a16,2026-09-07T10:25:00Z,Skateboarding,Robotics,
+demo_ef72,2026-09-08T14:38:00Z,Nature Lab,Astronomy,Orchestra
+demo_336d,2026-09-09T09:11:00Z,Cookery and Baking,Nature Lab,
+demo_94c1,2026-09-10T12:54:00Z,Astronomy,Skateboarding,Robotics
+demo_6bb8,2026-09-11T17:03:00Z,Orchestra,Astronomy,
+demo_f405,2026-09-12T08:46:00Z,Nature Lab,Cookery and Baking,Skateboarding
+demo_2c9e,2026-09-12T19:22:00Z,Robotics,Orchestra,Nature Lab
+demo_ae31,2026-09-13T10:17:00Z,Astronomy,Nature Lab,
+demo_73d6,2026-09-14T15:31:00Z,Orchestra,Robotics,Skateboarding

@@ -1,0 +1,8 @@
+.direnv/
+.svelte-kit/
+build/
+node_modules/
+playwright-report/
+test-results/
+coverage/
+.DS_Store

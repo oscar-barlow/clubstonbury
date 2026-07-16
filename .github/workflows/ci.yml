@@ -1,0 +1,94 @@
+name: CI
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: ci-pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Quality · fmt, lint, check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+      - name: Load Nix development environment
+        run: echo "PATH=$(nix develop --command printenv PATH)" >> "$GITHUB_ENV"
+      - name: Install locked dependencies
+        run: deno install --frozen
+      - name: Check Nix flake
+        run: nix flake check
+      - name: Check formatting
+        run: deno fmt --check
+      - name: Lint
+        run: deno task lint
+      - name: Check Svelte and TypeScript
+        run: deno task check
+
+  unit:
+    name: Tests · unit and integration
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+      - name: Load Nix development environment
+        run: echo "PATH=$(nix develop --command printenv PATH)" >> "$GITHUB_ENV"
+      - name: Install locked dependencies
+        run: deno install --frozen
+      - name: Run tests
+        run: deno task test
+
+  build:
+    name: Build · static SPA
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+      - name: Load Nix development environment
+        run: echo "PATH=$(nix develop --command printenv PATH)" >> "$GITHUB_ENV"
+      - name: Install locked dependencies
+        run: deno install --frozen
+      - name: Build
+        run: deno task build
+
+  e2e:
+    name: Tests · browser and offline
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+      - name: Load Nix development environment
+        run: echo "PATH=$(nix develop --command printenv PATH)" >> "$GITHUB_ENV"
+      - name: Install locked dependencies
+        run: deno install --frozen
+      - name: Install Chromium and system dependencies
+        run: deno run -A npm:playwright install --with-deps chromium
+      - name: Run browser tests
+        run: deno task test:e2e
+
+  ci:
+    name: CI
+    if: always()
+    needs: [quality, unit, build, e2e]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify required jobs
+        env:
+          QUALITY_RESULT: ${{ needs.quality.result }}
+          UNIT_RESULT: ${{ needs.unit.result }}
+          BUILD_RESULT: ${{ needs.build.result }}
+          E2E_RESULT: ${{ needs.e2e.result }}
+        run: |
+          for result in "$QUALITY_RESULT" "$UNIT_RESULT" "$BUILD_RESULT" "$E2E_RESULT"; do
+            if [[ "$result" != "success" ]]; then
+              echo "A required CI job did not succeed: $result"
+              exit 1
+            fi
+          done

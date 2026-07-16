@@ -1,0 +1,8 @@
+id,timestamp,choice_1,choice_2,choice_3
+duplicate_id,2026-09-01T09:00:00Z,Football,Drama,
+duplicate_id,2026-09-02T09:00:00Z,Coding,Art,
+bad_timestamp,Tuesday afternoon,Chess,,
+missing_first,2026-09-03T09:00:00Z,,Drama,
+choice_gap,2026-09-04T09:00:00Z,Choir,,Art
+repeated_choice,2026-09-05T09:00:00Z,Gardening,gardening,
+,2026-09-06T09:00:00Z,Art,,

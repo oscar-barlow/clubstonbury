@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: clubstonbury
+    runtime: static
+    buildCommand: deno task build
+    staticPublishPath: ./build
+    pullRequestPreviewsEnabled: true
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /200.html

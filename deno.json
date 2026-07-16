@@ -1,0 +1,29 @@
+{
+  "lock": true,
+  "nodeModulesDir": "auto",
+  "tasks": {
+    "dev": "deno run -A npm:vite --host 0.0.0.0",
+    "check": "deno run -A npm:@sveltejs/kit sync && deno run -A npm:svelte-check --tsconfig ./tsconfig.json",
+    "test": "deno test -A tests/unit",
+    "coverage": "deno test -A --coverage=coverage tests/unit && deno coverage coverage",
+    "test:e2e": "deno task build && deno run -A npm:playwright test",
+    "build": "deno run -A npm:vite build",
+    "preview": "deno run -A npm:vite preview --host 0.0.0.0",
+    "fmt": "deno fmt",
+    "lint": "deno lint"
+  },
+  "compilerOptions": {
+    "types": ["./tests/deno.d.ts"]
+  },
+  "fmt": {
+    "indentWidth": 2,
+    "lineWidth": 100,
+    "semiColons": true,
+    "singleQuote": true,
+    "include": ["src/", "tests/", "*.ts", "*.js", "*.json", "README.md"]
+  },
+  "lint": {
+    "include": ["src/**/*.ts", "tests/**/*.ts", "vite.config.ts", "playwright.config.ts"],
+    "rules": { "tags": ["recommended"] }
+  }
+}

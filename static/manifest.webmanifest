@@ -1,0 +1,12 @@
+{
+  "name": "Clubstonbury",
+  "short_name": "Clubstonbury",
+  "description": "Fairness without Stress for after-school club allocation.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fffdf8",
+  "theme_color": "#123c43",
+  "icons": [
+    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

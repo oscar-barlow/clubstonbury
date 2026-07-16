@@ -1,0 +1,6 @@
+id,timestamp,choice_1,choice_2,choice_3
+kid_a8f2,2026-09-01T14:23:00Z,Football,Drama,Coding
+kid_b129,2026-09-02T09:05:00Z,Drama,Art,
+kid_c731,2026-09-03T18:42:00Z,Football,,
+kid_d422,2026-09-04T11:10:00Z,Coding,Football,Art
+kid_e913,2026-09-05T08:22:00Z,Art,Drama,

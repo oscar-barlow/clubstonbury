@@ -1,0 +1,31 @@
+id,timestamp,choice_1,choice_2,choice_3
+manual_0001,2026-09-01T08:05:00Z,Football,Drama,Coding
+manual_0002,2026-09-01T08:44:00Z,Drama,Art,Choir
+manual_0003,2026-09-01T10:12:00Z,Coding,Chess,Football
+manual_0004,2026-09-02T07:58:00Z,Art,Gardening,
+manual_0005,2026-09-02T13:21:00Z,Gardening,Cookery and Baking,Art
+manual_0006,2026-09-03T09:37:00Z,Chess,Coding,
+manual_0007,2026-09-03T16:49:00Z,Choir,Drama,Art
+manual_0008,2026-09-04T08:16:00Z,Cookery and Baking,Gardening,
+manual_0009,2026-09-04T12:03:00Z,Football,Coding,Chess
+manual_0010,2026-09-05T11:28:00Z,Drama,Choir,Football
+manual_0011,2026-09-06T14:55:00Z,Coding,Football,Gardening
+manual_0012,2026-09-07T07:43:00Z,Art,Drama,
+manual_0013,2026-09-07T15:32:00Z,Gardening,Art,Cookery and Baking
+manual_0014,2026-09-08T09:19:00Z,Chess,Football,Coding
+manual_0015,2026-09-08T17:06:00Z,Choir,Art,Drama
+manual_0016,2026-09-09T08:51:00Z,Cookery and Baking,Choir,Gardening
+manual_0017,2026-09-09T13:40:00Z,Football,Chess,
+manual_0018,2026-09-10T10:26:00Z,Drama,Football,Choir
+manual_0019,2026-09-10T18:14:00Z,Coding,Gardening,Chess
+manual_0020,2026-09-11T07:35:00Z,Art,Cookery and Baking,
+manual_0021,2026-09-11T12:48:00Z,Gardening,Coding,Art
+manual_0022,2026-09-12T09:02:00Z,Chess,Choir,Football
+manual_0023,2026-09-12T15:57:00Z,Choir,Cookery and Baking,Drama
+manual_0024,2026-09-13T11:11:00Z,Cookery and Baking,Art,Chess
+manual_0025,2026-09-14T08:23:00Z,Football,Gardening,Drama
+manual_0026,2026-09-14T16:36:00Z,Drama,Coding,Art
+manual_0027,2026-09-15T09:49:00Z,Coding,Choir,
+manual_0028,2026-09-15T14:04:00Z,Art,Football,Cookery and Baking
+manual_0029,2026-09-16T10:42:00Z,Gardening,Chess,Coding
+manual_0030,2026-09-16T17:18:00Z,Choir,Drama,Gardening
