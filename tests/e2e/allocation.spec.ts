@@ -71,6 +71,14 @@ test('home-to-download workflow creates the expected timestamped ZIP', async ({ 
   await expect(page.getByText('Clubstonbury processes your CSV entirely inside this browser.'))
     .toHaveCount(0);
   await page.locator('.hero').getByRole('link', { name: 'Start an allocation' }).click();
+  expect(await page.locator('.workflow-steps a').allTextContents()).toEqual([
+    '1 Applications',
+    '2 Capacities',
+    '3 Review and run',
+    '4 Results',
+    '5 Download',
+  ]);
+  expect(await page.locator('.panel-number').allTextContents()).toEqual(['1', '2', '3', '4', '5']);
   await completeAllocation(page);
 
   const downloadPromise = page.waitForEvent('download');

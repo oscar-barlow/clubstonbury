@@ -543,6 +543,14 @@ h1 {
 .file-meta strong {
   display: block;
 }
+.validation-area {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--line);
+}
+.validation-area > h3 {
+  margin-top: 0;
+}
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
