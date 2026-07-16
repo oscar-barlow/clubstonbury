@@ -1,4 +1,7 @@
 import { defineConfig } from '@playwright/test';
+import process from 'node:process';
+
+const chromiumPath = process.env.CHROMIUM_BIN;
 
 export default defineConfig({
   testDir: './tests/e2e',
@@ -7,6 +10,7 @@ export default defineConfig({
   reporter: 'list',
   use: {
     baseURL: 'http://127.0.0.1:4173',
+    launchOptions: chromiumPath ? { executablePath: chromiumPath } : undefined,
     trace: 'retain-on-failure',
   },
   webServer: {

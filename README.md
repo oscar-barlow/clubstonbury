@@ -112,7 +112,7 @@ a predictable UTF-8 locale. Node.js, npm, Yarn and pnpm are not part of the work
 are installed and locked through Deno's npm compatibility layer.
 
 ```sh
-git clone <repository>
+git clone https://github.com/oscar-barlow/clubstonbury.git
 cd clubstonbury
 direnv allow
 deno task dev
@@ -126,6 +126,7 @@ deno task check     # Svelte and TypeScript checks
 deno task test      # unit and integration tests
 deno task coverage  # core-module coverage report
 deno task test:e2e  # production-build browser and offline tests
+deno task guides    # regenerate the two printable PDF guides
 deno task build     # static SPA in build/
 deno task preview   # preview the static build
 deno task fmt       # format source and documentation
@@ -146,9 +147,10 @@ Rewrite: /* -> /200.html (200)
 
 No environment variables or secrets are required.
 
-Render pull request previews are enabled in `render.yaml`. GitHub Actions runs formatting, lint,
-Svelte/TypeScript checks, unit and integration tests, the static build, and Chromium browser/offline
-tests when a pull request is opened and whenever new commits are pushed to that pull request.
+Render pull request previews are enabled in `render.yaml`. The cache-free GitHub Actions workflow in
+`.github/workflows/ci.yml` runs formatting, lint, Svelte/TypeScript checks, unit and integration
+tests, the static build, and Chromium browser/offline tests whenever a pull request is opened or
+updated.
 
 ## Demo and manual test data
 
@@ -170,3 +172,7 @@ V1 does not provide accounts, saved projects, eligibility checks, priority group
 refusal tracking, email, year handling, staff overrides or interactive waiting-list management. Late
 applications and residual places are handled through first-come, first-served mop-up after the
 original waiting lists are exhausted.
+
+## License
+
+Clubstonbury is open-source software licensed under the [MIT License](LICENSE).

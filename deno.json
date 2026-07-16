@@ -7,6 +7,7 @@
     "test": "deno test -A tests/unit",
     "coverage": "deno test -A --coverage=coverage tests/unit && deno coverage coverage",
     "test:e2e": "deno task build && deno run -A npm:playwright test",
+    "guides": "deno run -A scripts/generate-guides.ts",
     "build": "deno run -A npm:vite build",
     "preview": "deno run -A npm:vite preview --host 0.0.0.0",
     "fmt": "deno fmt",
@@ -20,10 +21,16 @@
     "lineWidth": 100,
     "semiColons": true,
     "singleQuote": true,
-    "include": ["src/", "tests/", "*.ts", "*.js", "*.json", "README.md"]
+    "include": ["src/", "tests/", "scripts/", "guides/", "*.ts", "*.js", "*.json", "README.md"]
   },
   "lint": {
-    "include": ["src/**/*.ts", "tests/**/*.ts", "vite.config.ts", "playwright.config.ts"],
+    "include": [
+      "src/**/*.ts",
+      "tests/**/*.ts",
+      "scripts/**/*.ts",
+      "vite.config.ts",
+      "playwright.config.ts"
+    ],
     "rules": { "tags": ["recommended"] }
   }
 }

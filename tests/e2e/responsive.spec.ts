@@ -8,7 +8,7 @@ for (
 ) {
   test(`${viewport.name} routes fit the viewport without horizontal overflow`, async ({ page }) => {
     await page.setViewportSize({ width: viewport.width, height: viewport.height });
-    for (const route of ['/', '/allocate', '/demo']) {
+    for (const route of ['/', '/allocate', '/demo', '/privacy', '/terms']) {
       await page.goto(route);
       await expect(page.locator('main')).toBeVisible();
       const geometry = await page.evaluate(() => ({

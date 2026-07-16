@@ -22,5 +22,6 @@
 
 <footer class="site-footer">
   <div><strong>Clubstonbury</strong><span>Fairness without Stress</span></div>
-  <p><span aria-hidden="true">▣</span> No accounts, cookies, analytics or tracking.</p>
+  <nav class="footer-links" aria-label="Legal and project links"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a class="github-link" href="https://github.com/oscar-barlow/clubstonbury" target="_blank" rel="noreferrer"><img src="/logos/github-octocat.svg" alt="" /> <span>Source on GitHub</span></a></nav>
+  <p class="footer-meta"><span aria-hidden="true">▣</span> No accounts, cookies, analytics or tracking.</p>
 </footer>
