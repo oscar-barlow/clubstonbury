@@ -1,0 +1,15 @@
+{
+  "deno": {
+    "version": "2.9.2",
+    "targets": {
+      "x86_64-linux": "x86_64-unknown-linux-gnu",
+      "aarch64-linux": "aarch64-unknown-linux-gnu",
+      "aarch64-darwin": "aarch64-apple-darwin"
+    },
+    "sha256": {
+      "x86_64-linux": "sha256-k00b1csJ6u1/LkpPxYII0Eo8XA/N6fMZ2T1zUmXGeko=",
+      "aarch64-linux": "sha256-MQuPSOWZZP8YiQ015k9k+5Doscxdnr/4yBgyfVr7FtI=",
+      "aarch64-darwin": "sha256-aHrkhRaLpzpPHuOpVOtPB37KgvL+/SNqaoOjiJKHh2w="
+    }
+  }
+}

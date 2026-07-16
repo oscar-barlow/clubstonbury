@@ -5,7 +5,7 @@
     { number: '01', icon: '≡', title: 'Choose the lineup', text: 'Families choose one to three clubs and rank them in genuine preference order.' },
     { number: '02', icon: '◎', title: 'Everyone enters the same lottery', text: 'Every valid application received before the deadline is treated equally. The first morning has no advantage over the final day.' },
     { number: '03', icon: '①', title: 'First tickets first', text: 'Every child is considered for one club before anyone is considered for a second, then a third.' },
-    { number: '04', icon: '✓', title: 'Rankings matter', text: 'Choices are tried in order. A backup is considered only when higher choices are unavailable, so adding one cannot harm a higher choice.' },
+    { number: '04', icon: '✓', title: 'Rankings matter', text: 'Choices are considered in order of preference. A lower-ranked choice is considered only when higher-ranked choices are unavailable, so ranking another choice cannot harm a higher-ranked choice.' },
     { number: '05', icon: '↻', title: 'Waiting lists handle returns', text: 'If a ticket is declined, the next child on that club’s deterministic waiting list can be offered the place.' },
     { number: '06', icon: '◷', title: 'Mop-up is first come, first served', text: 'After original waiting lists are exhausted, any remaining places are offered to late applicants in the order they apply.' }
   ];
@@ -85,7 +85,7 @@
 
   <section class="fairness-band">
     <div class="page-width fairness-inner">
-      <div><p class="eyebrow">The fair-play promise</p><h2>Backups never cost a first choice.</h2></div>
+      <div><p class="eyebrow">The fair-play promise</p><h2>Lower-ranked choices cannot harm higher-ranked choices.</h2></div>
       <p>Lottery position depends only on the child’s opaque ID, the published algorithm version and the run seed. Submission times are preserved for the record, but never used to allocate a place.</p>
     </div>
   </section>

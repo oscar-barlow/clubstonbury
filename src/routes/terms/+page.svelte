@@ -34,7 +34,7 @@
   <section>
     <h2>No warranty or professional advice</h2>
     <p>The software is provided “as is” and “as available”, without warranties of accuracy, availability, fitness for a particular purpose or non-infringement. It is not legal, data-protection, educational or admissions advice. A deterministic result can still be wrong for your situation if its input data or settings are wrong.</p>
-    <p>You are responsible for maintaining appropriate backups. Data entered in the browser is intentionally not saved by Clubstonbury and cannot be recovered by the site operator.</p>
+    <p>You are responsible for maintaining appropriate secure copies. Data entered in the browser is intentionally not saved by Clubstonbury and cannot be recovered by the site operator.</p>
   </section>
 
   <section>

@@ -4,287 +4,293 @@
     <meta charset="utf-8" />
     <title>Clubstonbury: how the algorithm works</title>
     <style>
-      @page {
-        size: A4;
-        margin: 0;
-      }
-      * {
-        box-sizing: border-box;
-      }
-      html, body {
-        width: 210mm;
-        margin: 0;
-        color: #123c43;
-        background: white;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 9.2pt;
-        line-height: 1.35;
-      }
-      body {
-        print-color-adjust: exact;
-        -webkit-print-color-adjust: exact;
-      }
-      .page {
-        width: 210mm;
-        height: 297mm;
-        padding: 11mm 13mm 10mm;
-        position: relative;
-        overflow: hidden;
-        break-after: page;
-      }
-      .page:last-child {
-        break-after: auto;
-      }
-      .page-content {
-        height: 270mm;
-        overflow: hidden;
-      }
-      h1, h2, h3, p {
-        overflow-wrap: anywhere;
-      }
-      h1 {
-        margin: 0;
-        font-size: 28pt;
-        line-height: 1;
-      }
-      h2 {
-        margin: 0 0 2.5mm;
-        font-size: 16pt;
-        line-height: 1.05;
-      }
-      h3 {
-        margin: 0 0 1mm;
-        font-size: 10.4pt;
-      }
-      p {
-        margin: 0 0 2.3mm;
-      }
-      ul, ol {
-        margin: 1.5mm 0 2.5mm;
-        padding-left: 5mm;
-      }
-      li {
-        margin: 0 0 1.1mm;
-      }
-      code {
-        font-family: 'Courier New', monospace;
-        font-size: 8.2pt;
-      }
-      .masthead {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 8mm;
-        border-bottom: 1.2mm solid #123c43;
-        padding-bottom: 4mm;
-        margin-bottom: 5mm;
-      }
-      .eyebrow {
-        margin: 0 0 1mm;
-        color: #a52b2b;
-        font-weight: 800;
-        text-transform: uppercase;
-        font-size: 7.6pt;
-      }
-      .strap {
-        margin: 1.5mm 0 0;
-        font-family: Georgia, serif;
-        font-size: 12pt;
-        font-style: italic;
-        font-weight: 700;
-      }
-      .badge {
-        min-width: 31mm;
-        padding: 2.5mm;
-        border: 0.6mm solid #123c43;
-        background: #64c4d1;
-        font-weight: 800;
-        text-align: center;
-      }
-      .intro {
-        font-size: 11pt;
-        max-width: 170mm;
-        margin-bottom: 4mm;
-      }
-      .priorities {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        border: 0.6mm solid #123c43;
-        margin-bottom: 5mm;
-      }
-      .priority {
-        min-height: 28mm;
-        padding: 3mm;
-        border-right: 0.35mm solid #123c43;
-      }
-      .priority:last-child {
-        border-right: 0;
-      }
-      .priority b {
-        display: grid;
-        place-items: center;
-        width: 7mm;
-        height: 7mm;
-        margin-bottom: 2mm;
-        background: #f6c64e;
-        border: 0.4mm solid #123c43;
-      }
-      .priority strong {
-        display: block;
-      }
-      .two-col {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 5mm;
-      }
-      .panel {
-        border-top: 1mm solid #64c4d1;
-        padding-top: 2.5mm;
-      }
-      .panel.red {
-        border-color: #d94c45;
-      }
-      .callout {
-        padding: 3mm;
-        background: #ccebdc;
-        border: 0.55mm solid #123c43;
-        margin: 3mm 0;
-      }
-      .warning {
-        border-left: 1.6mm solid #d94c45;
-        padding: 2.5mm 3mm;
-        background: #fff3ef;
-        margin: 2.5mm 0;
-      }
-      .inputs {
-        display: grid;
-        grid-template-columns: 1fr 9mm 1fr;
-        align-items: center;
-        gap: 2mm;
-        margin: 2.5mm 0;
-      }
-      .input-box {
-        padding: 2.5mm;
-        border: 0.5mm solid #123c43;
-        background: #f3f7f4;
-      }
-      .arrow {
-        display: grid;
-        place-items: center;
-        font-weight: 900;
-        font-size: 15pt;
-      }
-      .hash {
-        padding: 2.7mm;
-        background: #123c43;
-        color: white;
-        font: 7.8pt/1.35 'Courier New', monospace;
-        overflow-wrap: anywhere;
-        margin: 2.5mm 0;
-      }
-      .rounds {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 3mm;
-        margin: 3mm 0 4mm;
-      }
-      .round {
-        border: 0.5mm solid #123c43;
-        padding: 3mm;
-        min-height: 47mm;
-        position: relative;
-      }
-      .round:nth-child(1) {
-        background: #fff6d8;
-      }
-      .round:nth-child(2) {
-        background: #eaf7f8;
-      }
-      .round:nth-child(3) {
-        background: #edf8f2;
-      }
-      .round-num {
-        position: absolute;
-        right: 2mm;
-        top: 1.5mm;
-        color: #d94c45;
-        font-size: 20pt;
-        font-weight: 900;
-      }
-      .round h3 {
-        padding-right: 9mm;
-      }
-      .round ul {
-        padding-left: 4mm;
-        margin-bottom: 0;
-      }
-      .worked {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 2.5mm 0;
-        font-size: 8.3pt;
-      }
-      .worked th, .worked td {
-        border: 0.35mm solid #123c43;
-        padding: 1.7mm 2mm;
-        text-align: left;
-      }
-      .worked th {
-        background: #123c43;
-        color: white;
-      }
-      .worked .yes {
-        background: #ccebdc;
-        font-weight: 800;
-      }
-      .worked .no {
-        background: #fff3ef;
-        color: #7b2723;
-      }
-      .queue {
-        display: flex;
-        align-items: center;
-        gap: 2mm;
-        margin: 2.5mm 0;
-      }
-      .person {
-        min-width: 13mm;
-        padding: 2mm 1.5mm;
-        border: 0.45mm solid #123c43;
-        background: #f6c64e;
-        text-align: center;
-        font-weight: 800;
-      }
-      .person.done {
-        background: #ccebdc;
-      }
-      .audit {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2mm;
-        margin: 2.5mm 0;
-      }
-      .audit div {
-        padding: 2.5mm;
-        border: 0.45mm solid #123c43;
-        background: #f3f7f4;
-        text-align: center;
-        font-size: 8pt;
-      }
-      .page-footer {
-        position: absolute;
-        bottom: 5mm;
-        left: 13mm;
-        right: 13mm;
-        display: flex;
-        justify-content: space-between;
-        border-top: 0.35mm solid #123c43;
-        padding-top: 1.5mm;
-        font-size: 7.3pt;
-      }
-      .small {
-        font-size: 7.8pt;
-      }
+    @page {
+      size: A4;
+      margin: 0;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    html,
+    body {
+      width: 210mm;
+      margin: 0;
+      color: #123c43;
+      background: white;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 9.2pt;
+      line-height: 1.35;
+    }
+    body {
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+    .page {
+      width: 210mm;
+      height: 297mm;
+      padding: 11mm 13mm 10mm;
+      position: relative;
+      overflow: hidden;
+      break-after: page;
+    }
+    .page:last-child {
+      break-after: auto;
+    }
+    .page-content {
+      height: 273mm;
+      overflow: hidden;
+    }
+    h1,
+    h2,
+    h3,
+    p {
+      overflow-wrap: anywhere;
+    }
+    h1 {
+      margin: 0;
+      font-size: 28pt;
+      line-height: 1;
+    }
+    h2 {
+      margin: 0 0 2.5mm;
+      font-size: 16pt;
+      line-height: 1.05;
+    }
+    h3 {
+      margin: 0 0 1mm;
+      font-size: 10.4pt;
+    }
+    p {
+      margin: 0 0 2.3mm;
+    }
+    ul,
+    ol {
+      margin: 1.5mm 0 2.5mm;
+      padding-left: 5mm;
+    }
+    li {
+      margin: 0 0 1.1mm;
+    }
+    code {
+      font-family: 'Courier New', monospace;
+      font-size: 8.2pt;
+    }
+    .masthead {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8mm;
+      border-bottom: 1.2mm solid #123c43;
+      padding-bottom: 4mm;
+      margin-bottom: 5mm;
+    }
+    .eyebrow {
+      margin: 0 0 1mm;
+      color: #a52b2b;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 7.6pt;
+    }
+    .strap {
+      margin: 1.5mm 0 0;
+      font-family: Georgia, serif;
+      font-size: 12pt;
+      font-style: italic;
+      font-weight: 700;
+    }
+    .badge {
+      min-width: 31mm;
+      padding: 2.5mm;
+      border: 0.6mm solid #123c43;
+      background: #64c4d1;
+      font-weight: 800;
+      text-align: center;
+    }
+    .intro {
+      font-size: 11pt;
+      max-width: 170mm;
+      margin-bottom: 4mm;
+    }
+    .priorities {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 0.6mm solid #123c43;
+      margin-bottom: 5mm;
+    }
+    .priority {
+      min-height: 28mm;
+      padding: 3mm;
+      border-right: 0.35mm solid #123c43;
+    }
+    .priority:last-child {
+      border-right: 0;
+    }
+    .priority b {
+      display: grid;
+      place-items: center;
+      width: 7mm;
+      height: 7mm;
+      margin-bottom: 2mm;
+      background: #f6c64e;
+      border: 0.4mm solid #123c43;
+    }
+    .priority strong {
+      display: block;
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5mm;
+    }
+    .panel {
+      border-top: 1mm solid #64c4d1;
+      padding-top: 2.5mm;
+    }
+    .panel.red {
+      border-color: #d94c45;
+    }
+    .callout {
+      padding: 3mm;
+      background: #ccebdc;
+      border: 0.55mm solid #123c43;
+      margin: 3mm 0;
+    }
+    .warning {
+      border-left: 1.6mm solid #d94c45;
+      padding: 2.5mm 3mm;
+      background: #fff3ef;
+      margin: 2.5mm 0;
+    }
+    .inputs {
+      display: grid;
+      grid-template-columns: 1fr 9mm 1fr;
+      align-items: center;
+      gap: 2mm;
+      margin: 2.5mm 0;
+    }
+    .input-box {
+      padding: 2.5mm;
+      border: 0.5mm solid #123c43;
+      background: #f3f7f4;
+    }
+    .arrow {
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 15pt;
+    }
+    .hash {
+      padding: 2.7mm;
+      background: #123c43;
+      color: white;
+      font: 7.8pt/1.35 'Courier New', monospace;
+      overflow-wrap: anywhere;
+      margin: 2.5mm 0;
+    }
+    .rounds {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3mm;
+      margin: 3mm 0 4mm;
+    }
+    .round {
+      border: 0.5mm solid #123c43;
+      padding: 3mm;
+      min-height: 47mm;
+      position: relative;
+    }
+    .round:nth-child(1) {
+      background: #fff6d8;
+    }
+    .round:nth-child(2) {
+      background: #eaf7f8;
+    }
+    .round:nth-child(3) {
+      background: #edf8f2;
+    }
+    .round-num {
+      position: absolute;
+      right: 2mm;
+      top: 1.5mm;
+      color: #d94c45;
+      font-size: 20pt;
+      font-weight: 900;
+    }
+    .round h3 {
+      padding-right: 9mm;
+    }
+    .round ul {
+      padding-left: 4mm;
+      margin-bottom: 0;
+    }
+    .worked {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2.5mm 0;
+      font-size: 8.3pt;
+    }
+    .worked th,
+    .worked td {
+      border: 0.35mm solid #123c43;
+      padding: 1.7mm 2mm;
+      text-align: left;
+    }
+    .worked th {
+      background: #123c43;
+      color: white;
+    }
+    .worked .yes {
+      background: #ccebdc;
+      font-weight: 800;
+    }
+    .worked .no {
+      background: #fff3ef;
+      color: #7b2723;
+    }
+    .queue {
+      display: flex;
+      align-items: center;
+      gap: 2mm;
+      margin: 2.5mm 0;
+    }
+    .person {
+      min-width: 13mm;
+      padding: 2mm 1.5mm;
+      border: 0.45mm solid #123c43;
+      background: #f6c64e;
+      text-align: center;
+      font-weight: 800;
+    }
+    .person.done {
+      background: #ccebdc;
+    }
+    .audit {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2mm;
+      margin: 2.5mm 0;
+    }
+    .audit div {
+      padding: 2.5mm;
+      border: 0.45mm solid #123c43;
+      background: #f3f7f4;
+      text-align: center;
+      font-size: 8pt;
+    }
+    .page-footer {
+      position: absolute;
+      bottom: 5mm;
+      left: 13mm;
+      right: 13mm;
+      display: flex;
+      justify-content: space-between;
+      border-top: 0.35mm solid #123c43;
+      padding-top: 1.5mm;
+      font-size: 7.3pt;
+    }
+    .small {
+      font-size: 7.8pt;
+    }
     </style>
   </head>
   <body>
@@ -376,7 +382,7 @@
                 <li>Every child is eligible.</li>
                 <li>Use round 1 lottery order.</li>
                 <li>
-                  Try their first choice, then backups, until finding one open requested club.
+                  Try their requested clubs in order of preference until finding one that is open.
                 </li>
                 <li>Stop after at most one allocation.</li>
               </ul>
@@ -450,7 +456,7 @@
             <tr>
               <td><strong>A</strong></td>
               <td>Football, Drama</td>
-              <td>Football is full; backup Drama is open.</td>
+              <td>Football is full; next-ranked Drama is open.</td>
               <td class="yes">Drama</td>
             </tr>
             <tr>
@@ -463,7 +469,8 @@
         </table>
         <p>
           Everyone has one club, and every capacity is now full. No one can receive another place in
-          rounds 2 or 3. A's backup helped A; listing it did not change A's chance at Football.
+          rounds 2 or 3. A's lower-ranked Drama choice helped A; ranking it did not change A's
+          chance at Football.
         </p>
         <div class="two-col" style="margin-top: 5mm">
           <section class="panel red">
@@ -506,8 +513,8 @@
           <div class="two-col">
             <ul>
               <li>
-                <strong>Backup-safe:</strong> a lower choice is considered only after higher choices
-                are unavailable at that turn.
+                <strong>Preference-order safe:</strong> a lower-ranked choice is considered only
+                after higher-ranked choices are unavailable at that turn.
               </li>
               <li>
                 <strong>No choice-count bonus:</strong> listing fewer clubs does not improve
