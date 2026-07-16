@@ -20,7 +20,11 @@ async function completeAllocation(page: import('@playwright/test').Page): Promis
 test('home-to-download workflow creates the expected timestamped ZIP', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1, name: 'Clubstonbury' })).toBeVisible();
-  await expect(page.getByText('Fairness without Stress').first()).toBeVisible();
+  await expect(page.getByRole('heading', {
+    name: 'Clubs matter. The stampede doesn’t have to.',
+  })).toBeVisible();
+  await expect(page.getByText(/important part of the school experience/u)).toBeVisible();
+  await expect(page.getByText(/school staff to manage the rush/u)).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Everyone enters the same lottery' }))
     .toBeVisible();
   await expect(page.getByText(/removing time pressure and stress for families/u)).toBeVisible();
@@ -33,6 +37,11 @@ test('home-to-download workflow creates the expected timestamped ZIP', async ({ 
     name: 'Done! Send invoices, and file the allocation data for your records',
   })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Practical Guides', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', {
+    name: 'Free, fair and private, without another school platform.',
+  })).toBeVisible();
+  await expect(page.getByText(/No new account, platform or integration is needed/u)).toBeVisible();
+  await expect(page.getByText('Fairness without Stress')).toHaveCount(0);
   await expect(page.getByText('Clubstonbury processes your CSV entirely inside this browser.'))
     .toHaveCount(0);
   await page.getByRole('link', { name: 'Start an allocation' }).click();

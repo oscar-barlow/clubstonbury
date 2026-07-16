@@ -224,7 +224,6 @@
     <div class="page-width">
       <p class="eyebrow">The allocation tent</p>
       <h1>Allocate club places</h1>
-      <p class="strapline">Fairness without Stress</p>
       <p>Load the applications, set each club’s capacity and run a reproducible three-round lottery entirely on this device.</p>
     </div>
   </section>
@@ -340,7 +339,7 @@ Algorithm: {manifest.algorithmVersion}
 Input CSV SHA-256: {manifest.inputCsvSha256}
 Capacities: {JSON.stringify(manifest.capacities, null, 2)}</pre>
       {:else}<p class="notice">A current lottery result is required before the results archive can be downloaded.</p>{/if}
-      <div class="notice"><strong>Returned tickets and mop-up:</strong> work down the original club waiting list without reordering it. Only after that list is exhausted should remaining places be offered to late applicants or children making new choices, first come, first served.</div>
+      <div class="notice"><strong>Returned places and mop-up:</strong> the archive includes a reproducible waiting list for each club. The school decides how to use it and is responsible for subsequent offers. Clubstonbury's published mop-up workflow handles late applicants or new choices first come, first served after the original waiting-list process.</div>
       <button class="button danger" type="button" on:click={clearAll}>Clear all data</button>
     </section>
   </div>

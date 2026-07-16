@@ -1,7 +1,7 @@
 {
   "name": "Clubstonbury",
   "short_name": "Clubstonbury",
-  "description": "Fairness without Stress for after-school club allocation.",
+  "description": "A calmer, private way for schools to allocate after-school club places.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#fffdf8",

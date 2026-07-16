@@ -2,6 +2,9 @@ import { expect, test } from '@playwright/test';
 
 test('legal pages are linked and the GitHub logo links to the source repository', async ({ page }) => {
   await page.goto('/');
+  await expect(page.locator(
+    'script[src="https://scripts.simpleanalyticscdn.com/latest.js"]',
+  )).toHaveCount(1);
 
   await page.getByRole('link', { name: 'Privacy', exact: true }).click();
   await expect(
@@ -9,6 +12,7 @@ test('legal pages are linked and the GitHub logo links to the source repository'
   )
     .toBeVisible();
   await expect(page.getByText('lawful basis')).toHaveCount(0);
+  await expect(page.getByRole('link', { name: 'Simple Analytics' }).first()).toBeVisible();
 
   await page.getByRole('link', { name: 'Terms', exact: true }).click();
   await expect(

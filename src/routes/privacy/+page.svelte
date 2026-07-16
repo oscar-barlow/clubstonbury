@@ -16,7 +16,7 @@
   <section>
     <div class="policy-callout">
       <h2>Files are processed locally, not uploaded</h2>
-      <p>When you select a CSV, the browser reads it directly into memory. Validation, the seeded lottery, waiting lists and the result ZIP are all produced on this device. Running an allocation makes no network requests.</p>
+      <p>When you select a CSV, the browser reads it directly into memory. Validation, the seeded lottery, waiting lists and the result ZIP are all produced on this device. The allocation workflow does not upload its inputs or outputs.</p>
     </div>
   </section>
 
@@ -35,9 +35,10 @@
   </section>
 
   <section>
-    <h2>No accounts or tracking</h2>
-    <p>The site has no sign-in, user accounts, analytics, advertising, tracking pixels or error-reporting service. It sets no cookies and loads no third-party scripts, fonts or images.</p>
-    <p>Clubstonbury does not save uploaded data or results to local storage or a browser database.</p>
+    <h2>No accounts, cookies or personal tracking</h2>
+    <p>The site has no sign-in, user accounts, advertising or error-reporting service. Clubstonbury does not save selected data or results to local storage or a browser database.</p>
+    <p>Clubstonbury uses <a href="https://www.simpleanalytics.com/" rel="noreferrer">Simple Analytics</a> to understand aggregate site use. The browser loads its third-party script, or a small image when JavaScript is disabled. It records metrics such as the page visited, referrer, time zone, browser and device category, language, screen dimensions and scroll depth.</p>
+    <p>Simple Analytics states that it uses no cookies, local storage, fingerprinting or user/device identifiers, and that IP addresses are discarded rather than stored. The site operator sees aggregate traffic reports, not individual visitor profiles. Clubstonbury does not send selected CSV contents, opaque child IDs, choices, capacities, seeds or allocation results through analytics. See <a href="https://docs.simpleanalytics.com/data-collection" rel="noreferrer">Simple Analytics' data-collection documentation</a> for details.</p>
   </section>
 
   <section>

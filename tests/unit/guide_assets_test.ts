@@ -12,3 +12,22 @@ for (
     assert.equal(new TextDecoder().decode(contents.slice(0, 5)), '%PDF-');
   });
 }
+
+Deno.test('administrator guide keeps timing optional and explains spreadsheet IDs', async () => {
+  const source = await Deno.readTextFile('guides/admin-guide.html');
+
+  assert.match(source, /two weeks is a useful example, not a requirement/iu);
+  assert.match(source, /Excel/iu);
+  assert.match(source, /Google Sheets/iu);
+  assert.match(source, /RANDBETWEEN\(0,2147483647\)/u);
+  assert.doesNotMatch(source, /Do not reorder/iu);
+});
+
+Deno.test('algorithm guide explains randomised preference-order allocation in plain language', async () => {
+  const source = await Deno.readTextFile('guides/algorithm-guide.html');
+
+  assert.match(source, /randomised order/iu);
+  assert.match(source, /preference order/iu);
+  assert.doesNotMatch(source, /SHA-256/iu);
+  assert.doesNotMatch(source, /Fairness without Stress/iu);
+});

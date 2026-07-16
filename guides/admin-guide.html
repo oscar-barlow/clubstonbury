@@ -5,7 +5,7 @@
     <title>Clubstonbury: administrator guide</title>
     <style>
     @page {
-      size: A4;
+      size: A4 landscape;
       margin: 0;
     }
     * {
@@ -13,22 +13,22 @@
     }
     html,
     body {
-      width: 210mm;
+      width: 297mm;
       margin: 0;
       color: #123c43;
       background: white;
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 9.2pt;
-      line-height: 1.35;
+      font-size: 8.7pt;
+      line-height: 1.3;
     }
     body {
       print-color-adjust: exact;
       -webkit-print-color-adjust: exact;
     }
     .page {
-      width: 210mm;
-      height: 297mm;
-      padding: 11mm 13mm 10mm;
+      width: 297mm;
+      height: 210mm;
+      padding: 9mm 12mm 8mm;
       position: relative;
       overflow: hidden;
       break-after: page;
@@ -37,7 +37,7 @@
       break-after: auto;
     }
     .page-content {
-      height: 270mm;
+      height: 187mm;
       overflow: hidden;
     }
     h1,
@@ -48,28 +48,28 @@
     }
     h1 {
       margin: 0;
-      font-size: 28pt;
+      font-size: 23pt;
       line-height: 1;
     }
     h2 {
-      margin: 0 0 2.5mm;
-      font-size: 16pt;
+      margin: 0 0 2mm;
+      font-size: 14pt;
       line-height: 1.05;
     }
     h3 {
       margin: 0 0 1mm;
-      font-size: 10.4pt;
+      font-size: 9.8pt;
     }
     p {
-      margin: 0 0 2.3mm;
+      margin: 0 0 1.8mm;
     }
     ul,
     ol {
-      margin: 1.5mm 0 2.5mm;
+      margin: 1mm 0 2mm;
       padding-left: 5mm;
     }
     li {
-      margin: 0 0 1.1mm;
+      margin: 0 0 0.8mm;
     }
     code {
       font-family: 'Courier New', monospace;
@@ -81,8 +81,8 @@
       justify-content: space-between;
       gap: 8mm;
       border-bottom: 1.2mm solid #123c43;
-      padding-bottom: 4mm;
-      margin-bottom: 5mm;
+      padding-bottom: 3mm;
+      margin-bottom: 3mm;
     }
     .eyebrow {
       margin: 0 0 1mm;
@@ -90,13 +90,6 @@
       font-weight: 800;
       text-transform: uppercase;
       font-size: 7.6pt;
-    }
-    .strap {
-      margin: 1.5mm 0 0;
-      font-family: Georgia, serif;
-      font-size: 12pt;
-      font-style: italic;
-      font-weight: 700;
     }
     .badge {
       min-width: 31mm;
@@ -107,19 +100,19 @@
       text-align: center;
     }
     .intro {
-      font-size: 11pt;
-      max-width: 166mm;
-      margin-bottom: 4mm;
+      font-size: 10pt;
+      max-width: 245mm;
+      margin-bottom: 3mm;
     }
     .timeline {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       border: 0.6mm solid #123c43;
-      margin: 0 0 5mm;
+      margin: 0 0 4mm;
     }
     .timeline div {
-      min-height: 21mm;
-      padding: 2.5mm;
+      min-height: 17mm;
+      padding: 2mm;
       border-right: 0.35mm solid #123c43;
     }
     .timeline div:last-child {
@@ -141,20 +134,42 @@
     .two-col {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 5mm;
+      gap: 4mm;
+    }
+    .page-one-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 0.9fr 1.25fr;
+      gap: 4mm;
+    }
+    .page-two-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.05fr 1.15fr;
+      gap: 4mm;
+    }
+    .closing-stack {
+      display: grid;
+      align-content: start;
+      gap: 3mm;
+    }
+    .closing-stack .join {
+      grid-template-columns: 1fr 8mm 1fr;
+      gap: 1mm;
+    }
+    .closing-stack .join .arrow {
+      font-size: 10pt;
     }
     .panel {
       border-top: 1mm solid #64c4d1;
-      padding-top: 2.5mm;
+      padding-top: 2mm;
     }
     .panel.red {
       border-color: #d94c45;
     }
     .callout {
-      padding: 3mm;
+      padding: 2.5mm;
       background: #ccebdc;
       border: 0.55mm solid #123c43;
-      margin: 3mm 0;
+      margin: 2.5mm 0;
     }
     .privacy-flow {
       display: grid;
@@ -171,6 +186,35 @@
     .flow-box.safe {
       background: #ccebdc;
     }
+    .id-recipes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3mm;
+      margin: 0 0 2.5mm;
+    }
+    .id-formula,
+    .id-recipe {
+      padding: 2.5mm;
+      border: 0.5mm solid #123c43;
+      background: #f3f7f4;
+    }
+    .id-formula {
+      margin: 2.5mm 0 1.5mm;
+    }
+    .id-formula strong,
+    .id-formula small,
+    .id-formula code,
+    .id-recipe strong,
+    .id-recipe small,
+    .id-recipe code {
+      display: block;
+    }
+    .id-formula code,
+    .id-recipe code {
+      margin: 1mm 0;
+      font-size: 7.2pt;
+      overflow-wrap: anywhere;
+    }
     .arrow {
       display: grid;
       place-items: center;
@@ -182,8 +226,12 @@
       padding: 2.5mm;
       background: #123c43;
       color: white;
-      white-space: pre-wrap;
+      overflow-wrap: anywhere;
       font: 7.7pt/1.35 'Courier New', monospace;
+    }
+    .code-block span {
+      display: block;
+      white-space: nowrap;
     }
     .steps {
       counter-reset: step;
@@ -231,9 +279,9 @@
     }
     .page-footer {
       position: absolute;
-      bottom: 5mm;
-      left: 13mm;
-      right: 13mm;
+      bottom: 4mm;
+      left: 12mm;
+      right: 12mm;
       display: flex;
       justify-content: space-between;
       border-top: 0.35mm solid #123c43;
@@ -244,7 +292,7 @@
       border-left: 1.6mm solid #d94c45;
       padding: 2.5mm 3mm;
       background: #fff3ef;
-      margin: 2.5mm 0;
+      margin: 2mm 0;
     }
     .join {
       display: grid;
@@ -269,39 +317,38 @@
         <header class="masthead">
           <div>
             <p class="eyebrow">Clubstonbury field guide</p>
-            <h1>Run a fair club allocation</h1>
-            <p class="strap">Fairness without Stress</p>
+            <h1>5 Steps to run a club allocation</h1>
           </div>
           <div class="badge">For teachers and<br />school administrators</div>
         </header>
         <p class="intro">
-          Collect preferences in a familiar form, separate identities from the lottery data, then
-          keep a clear audit record. Clubstonbury processes the prepared CSV entirely in your
-          browser.
+          After-school clubs are an important part of school life, but first-come booking can create
+          a stressful stampede. Clubstonbury is a free, fair and private alternative that works with
+          the forms and spreadsheets your school already uses.
         </p>
         <div class="timeline" aria-label="Typical term timeline">
           <div>
-            <strong>1. OPEN</strong><span>Publish the form</span><small>Share with every eligible
-              family.</small>
+            <strong>1. CREATE</strong><span>Create and share</span><small>Send the form to every
+              eligible family.</small>
           </div>
           <div>
-            <strong>2. COLLECT</strong><span>Allow two weeks</span><small>Early entries get no
-              advantage.</small>
+            <strong>2. COLLECT</strong><span>Leave it open</span><small>Two weeks is one useful
+              timeframe.</small>
           </div>
           <div>
-            <strong>3. PREPARE</strong><span>Export and split</span><small>Make IDs and
+            <strong>3. ALLOCATE</strong><span>Run the allocation</span><small>Export, check and set
               capacities.</small>
           </div>
           <div>
-            <strong>4. ALLOCATE</strong><span>Run and check</span><small>Save the result
-              archive.</small>
+            <strong>4. MOP UP</strong><span>Do the mop-up</span><small>Decide how to use waiting
+              lists.</small>
           </div>
           <div>
-            <strong>5. COMPLETE</strong><span>Join and mop up</span><small>Waiting lists, then first
-              come.</small>
+            <strong>5. COMPLETE</strong><span>Invoice and file</span><small>Keep the allocation
+              record.</small>
           </div>
         </div>
-        <div class="two-col">
+        <div class="page-one-grid">
           <section class="panel red">
             <h2>1. Set up the family survey</h2>
             <p>
@@ -315,8 +362,9 @@
               <li>an automatic submission timestamp.</li>
             </ul>
             <p>
-              Use the same club spelling in every choice question. Explain eligibility, the deadline
-              and that submission time does not affect the on-time lottery.
+              Use the same club spelling in every choice question. Choose a response window that
+              works for your school; two weeks is a useful example, not a requirement. Explain
+              eligibility, the deadline and that submission time does not affect the on-time lottery.
             </p>
             <div class="callout">
               <strong>Choice design:</strong> let families choose up to three clubs, but do not
@@ -327,8 +375,8 @@
           <section class="panel">
             <h2>2. Export and check</h2>
             <p>
-              After the two-week window closes, stop responses and download the form results as CSV.
-              Keep this original file in the school's protected storage.
+              When your chosen response window closes, stop responses and download the form results
+              as CSV. Keep this original file in the school's protected storage.
             </p>
             <ul>
               <li>Remove duplicates and test submissions.</li>
@@ -341,34 +389,51 @@
               factually correct.
             </p>
           </section>
+          <section class="panel red">
+            <h2>3. Pseudonymise before allocation</h2>
+            <div class="privacy-flow">
+              <div class="flow-box">
+                <strong>Original survey</strong><br />Name, contact, timestamp, choices
+              </div>
+              <div class="arrow">&gt;</div>
+              <div class="flow-box safe">
+                <strong>Private lookup</strong><br /><code>id, name</code><br />Keep at school
+              </div>
+              <div class="arrow">&gt;</div>
+              <div class="flow-box">
+                <strong>Lottery CSV</strong><br />ID, timestamp, choices<br />No names
+              </div>
+            </div>
+            <div class="id-formula">
+              <strong>Create the random IDs</strong><small
+                >In Excel or Google Sheets, enter this in <code>A2</code>, then fill down:</small
+              >
+              <code>="kid_"&amp;LOWER(DEC2HEX(RANDBETWEEN(0,2147483647),8))</code>
+            </div>
+            <div class="id-recipes">
+              <div class="id-recipe">
+                <strong>Excel</strong><small>Copy column A, then use Home &gt; Paste &gt; Values.</small>
+              </div>
+              <div class="id-recipe">
+                <strong>Google Sheets</strong><small
+                  >Copy column A, then use Edit &gt; Paste special &gt; Values only.</small
+                >
+              </div>
+            </div>
+            <p>
+              The formulas recalculate, so freeze the IDs as values immediately. In a spare column,
+              use <code>=COUNTIF($A:$A,A2)&gt;1</code> and confirm every row is <code>FALSE</code>;
+              regenerate any duplicate. Make a separate two-column ID-to-name lookup and never upload
+              that lookup to Clubstonbury.
+            </p>
+            <div class="warning">
+              <strong>Data protection note:</strong> IDs that the school can reconnect to names are
+              pseudonymous, not fully anonymous. The lookup and lottery files remain personal data in
+              the school's hands. Store them separately, limit access and follow the school's
+              retention policy.
+            </div>
+          </section>
         </div>
-        <section class="panel red" style="margin-top: 5mm">
-          <h2>3. Pseudonymise before allocation</h2>
-          <div class="privacy-flow">
-            <div class="flow-box">
-              <strong>Original survey</strong><br />Name, contact, timestamp, choices
-            </div>
-            <div class="arrow">&gt;</div>
-            <div class="flow-box safe">
-              <strong>Private lookup</strong><br /><code>id, name</code><br />Keep at school
-            </div>
-            <div class="arrow">&gt;</div>
-            <div class="flow-box">
-              <strong>Lottery CSV</strong><br />ID, timestamp, choices<br />No names
-            </div>
-          </div>
-          <p>
-            Generate a unique, random-looking ID such as <code>kid_7f3a91c2</code> for every child.
-            Paste the generated IDs as values, check for duplicates, and make a separate two-column
-            ID-to-name lookup. Do not upload that lookup.
-          </p>
-          <div class="warning">
-            <strong>Data protection note:</strong> IDs that the school can reconnect to names are
-            pseudonymous, not fully anonymous. The lookup and lottery files remain personal data in
-            the school's hands. Store them separately, limit access and follow the school's
-            retention policy.
-          </div>
-        </section>
       </div>
       <footer class="page-footer">
         <span>clubstonbury</span><span>Administrator guide | 1 of 2</span>
@@ -384,14 +449,14 @@
           </div>
           <div class="badge">Keep the seed<br />with your audit record</div>
         </header>
-        <div class="two-col">
+        <div class="page-two-grid">
           <section class="panel">
             <h2>4. Make the two input files</h2>
             <h3>Applications: exact headings</h3>
             <div class="code-block">
-              id,timestamp,choice_1,choice_2,choice_3
-              kid_7f3a91c2,2026-09-01T09:30:00Z,Drama,Coding,Art
-              kid_3d8b104e,2026-09-02T13:14:00Z,Football,Drama,
+              <span>id,timestamp,choice_1,choice_2,choice_3</span>
+              <span>kid_7f3a91c2,2026-09-01T09:30:00Z,Drama,Coding,Art</span>
+              <span>kid_3d8b104e,2026-09-02T13:14:00Z,Football,Drama,</span>
             </div>
             <p>
               <code>id</code> must be unique. First choice is required; second and third are
@@ -399,7 +464,9 @@
             </p>
             <h3>Capacities: one row per club</h3>
             <div class="code-block">
-              club,capacity Drama,16 Coding,12 Art,10 Football,20
+              <span>club,capacity</span><span>Drama,16</span><span>Coding,12</span><span>Art,10</span><span
+                >Football,20</span
+              >
             </div>
             <p>
               Capacity is the total number of places available and may be zero. Names must match the
@@ -424,8 +491,8 @@
                 <strong>Review totals.</strong> Check child count, capacity and each club row.
               </li>
               <li>
-                <strong>Set the seed.</strong> Keep the generated random seed or enter a published
-                seed. Record it.
+                <strong>Keep the seed.</strong> Record the generated seed. It lets you rerun the same
+                allocation if anybody questions the result.
               </li>
               <li>
                 <strong>Run the lottery.</strong> Check allocations, unallocated children and
@@ -439,60 +506,65 @@
             <div class="callout small">
               <strong>Reproducibility:</strong> the same prepared applications CSV, capacities, seed
               and algorithm version reproduce the same result. The ZIP manifest records these
-              details and a source-file hash.
+              details and a source-file hash. If a result is challenged, rerun the retained inputs
+              and compare the output to show that the allocation has not changed.
             </div>
           </section>
-        </div>
-        <section class="panel" style="margin-top: 5mm">
-          <h2>6. Join names back in, securely</h2>
-          <div class="join">
-            <div><strong>allocations.csv</strong><br /><code>id, allocated_1...</code></div>
-            <div class="arrow">+</div>
-            <div><strong>private lookup</strong><br /><code>id, name</code></div>
+          <div class="closing-stack">
+            <section class="panel">
+              <h2>6. Join names back in, securely</h2>
+              <div class="join">
+                <div><strong>allocations.csv</strong><br /><code>id, allocated_1...</code></div>
+                <div class="arrow">+</div>
+                <div><strong>private lookup</strong><br /><code>id, name</code></div>
+              </div>
+              <p>
+                Open both in the school's approved spreadsheet tool. Match each allocation ID to the
+                lookup ID, then add the child's name locally. For Excel or Google Sheets, with the
+                result ID in <code>A2</code> and the lookup ID/name in columns A/B:
+              </p>
+              <div class="code-block">=XLOOKUP(A2, Mapping!A:A, Mapping!B:B, "Missing ID")</div>
+              <p>
+                Check that no row says "Missing ID", that every expected child appears once, and that
+                the joined row retains the correct opaque ID. Never upload the joined file to
+                Clubstonbury.
+              </p>
+            </section>
+            <div class="two-col">
+              <section class="panel red">
+                <h2>7. Offers, returns and mop-up</h2>
+                <p>
+                  If a place is declined, the downloaded waiting list provides Clubstonbury's
+                  reproducible order for that club. The school decides how to use the list and is
+                  responsible for every subsequent offer. In the published workflow, remaining places
+                  move to <strong>first-come, first-served</strong> mop-up after the school has finished
+                  with the original waiting list.
+                </p>
+              </section>
+              <section class="panel">
+                <h2>Final administrator check</h2>
+                <ul class="checklist small">
+                  <li>Eligibility checked</li>
+                  <li>Capacities confirmed</li>
+                  <li>IDs unique</li>
+                  <li>Warnings reviewed</li>
+                  <li>Seed recorded</li>
+                  <li>Results spot-checked</li>
+                  <li>ZIP stored securely</li>
+                  <li>Retention date set</li>
+                </ul>
+              </section>
+            </div>
+            <div class="warning small">
+              <strong>Responsibility:</strong> use Clubstonbury at your own risk. The school or
+              administrator is fully responsible for input accuracy, legal compliance, checking the
+              results and every offer made from them.
+            </div>
           </div>
-          <p>
-            Open both in the school's approved spreadsheet tool. Match each allocation ID to the
-            lookup ID, then add the child's name locally. For Excel or Google Sheets, with the
-            result ID in <code>A2</code> and the lookup ID/name in columns A/B:
-          </p>
-          <div class="code-block">=XLOOKUP(A2, Mapping!A:A, Mapping!B:B, "Missing ID")</div>
-          <p>
-            Check that no row says "Missing ID", that every expected child appears once, and that
-            the joined row retains the correct opaque ID. Never upload the joined file to
-            Clubstonbury.
-          </p>
-        </section>
-        <div class="two-col" style="margin-top: 4mm">
-          <section class="panel red">
-            <h2>7. Offers, returns and mop-up</h2>
-            <p>
-              If a place is declined, offer it to the next child on that club's original waiting
-              list. Do not reorder the list. Once that list is exhausted, offer any remaining places
-              to late or changed applications <strong>first come, first served</strong>.
-            </p>
-          </section>
-          <section class="panel">
-            <h2>Final administrator check</h2>
-            <ul class="checklist small">
-              <li>Eligibility checked</li>
-              <li>Capacities confirmed</li>
-              <li>IDs unique</li>
-              <li>Warnings reviewed</li>
-              <li>Seed recorded</li>
-              <li>Results spot-checked</li>
-              <li>ZIP stored securely</li>
-              <li>Retention date set</li>
-            </ul>
-          </section>
-        </div>
-        <div class="warning small">
-          <strong>Responsibility:</strong> use Clubstonbury at your own risk. The school or
-          administrator is fully responsible for input accuracy, legal compliance, checking the
-          results and every offer made from them.
         </div>
       </div>
       <footer class="page-footer">
-        <span>clubstonbury | Fairness without Stress</span><span>Administrator guide | 2 of 2</span>
+        <span>clubstonbury</span><span>Administrator guide | 2 of 2</span>
       </footer>
     </section>
   </body>
