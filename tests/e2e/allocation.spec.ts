@@ -21,8 +21,20 @@ test('home-to-download workflow creates the expected timestamped ZIP', async ({ 
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1, name: 'Clubstonbury' })).toBeVisible();
   await expect(page.getByText('Fairness without Stress').first()).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Everyone enters the same lottery' }))
+    .toBeVisible();
+  await expect(page.getByText(/removing time pressure and stress for families/u)).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Waiting lists are included' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Mop-up is first come, first served' }))
     .toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Create and share the form' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Leave it open', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', {
+    name: 'Done! Send invoices, and file the allocation data for your records',
+  })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Practical Guides', exact: true })).toBeVisible();
+  await expect(page.getByText('Clubstonbury processes your CSV entirely inside this browser.'))
+    .toHaveCount(0);
   await page.getByRole('link', { name: 'Start an allocation' }).click();
   await completeAllocation(page);
 

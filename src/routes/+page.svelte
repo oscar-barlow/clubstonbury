@@ -3,10 +3,10 @@
 
   const steps = [
     { number: '01', icon: '≡', title: 'Choose the lineup', text: 'Families choose one to three clubs and rank them in genuine preference order.' },
-    { number: '02', icon: '◎', title: 'Everyone enters the same lottery', text: 'Every valid application received before the deadline is treated equally. The first morning has no advantage over the final day.' },
+    { number: '02', icon: '◎', title: 'Everyone enters the same lottery', text: 'Every valid application received before the deadline is treated equally. Applying on the first morning gives no advantage over applying on the final day, removing time pressure and stress for families.' },
     { number: '03', icon: '①', title: 'First tickets first', text: 'Every child is considered for one club before anyone is considered for a second, then a third.' },
     { number: '04', icon: '✓', title: 'Rankings matter', text: 'Choices are considered in order of preference. A lower-ranked choice is considered only when higher-ranked choices are unavailable, so ranking another choice cannot harm a higher-ranked choice.' },
-    { number: '05', icon: '↻', title: 'Waiting lists handle returns', text: 'If a ticket is declined, the next child on that club’s deterministic waiting list can be offered the place.' },
+    { number: '05', icon: '↻', title: 'Waiting lists are included', text: 'The results include a deterministic waiting list for each club. If a place is declined, administrators can offer it to the next child on that list.' },
     { number: '06', icon: '◷', title: 'Mop-up is first come, first served', text: 'After original waiting lists are exhausted, any remaining places are offered to late applicants in the order they apply.' }
   ];
 </script>
@@ -55,11 +55,11 @@
       <p>Families can submit their preferences through a familiar tool such as Google Forms or SurveyMonkey. Configure the form for one to three ranked choices, then prepare its CSV export for Clubstonbury.</p>
     </div>
     <ol class="timeline-list">
-      <li><span>01</span><h3>Open the form</h3><p>Share the preferences form with every eligible family at the same time.</p></li>
-      <li><span>02</span><h3>Leave it open for two weeks</h3><p>Families can respond at any point in the window. Applying earlier gives no advantage.</p></li>
+      <li><span>01</span><h3>Create and share the form</h3><p>Share the preferences form with every eligible family at the same time.</p></li>
+      <li><span>02</span><h3>Leave it open</h3><p>Families can respond at any point in the window. Applying earlier gives no advantage.</p></li>
       <li><span>03</span><h3>Run the allocation</h3><p>Export the responses, check the CSV, enter capacities and run the seeded lottery.</p></li>
       <li><span>04</span><h3>Do the mop-up</h3><p>Work through original waiting lists first, then offer remaining places first come, first served.</p></li>
-      <li><span>05</span><h3>Term ends</h3><p>Keep the timestamped results archive as the audit record, then begin fresh next term.</p></li>
+      <li><span>05</span><h3>Done! Send invoices, and file the allocation data for your records</h3><p>Keep the source files, capacities and timestamped results archive together so the allocation can be reproduced.</p></li>
     </ol>
   </section>
 
@@ -67,7 +67,7 @@
     <div class="page-width guides-inner">
       <div class="guides-intro">
         <p class="eyebrow">Print and share</p>
-        <h2 id="guides-heading">Practical guides for your allocation</h2>
+        <h2 id="guides-heading">Practical Guides</h2>
         <p>Two concise, illustrated guides for planning the process, explaining the lottery and keeping a defensible audit trail.</p>
       </div>
       <div class="guide-list">

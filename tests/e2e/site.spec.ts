@@ -5,9 +5,10 @@ test('legal pages are linked and the GitHub logo links to the source repository'
 
   await page.getByRole('link', { name: 'Privacy', exact: true }).click();
   await expect(
-    page.getByRole('heading', { level: 1, name: 'Private here. Pseudonymous at school.' }),
+    page.getByRole('heading', { level: 1, name: 'Your allocation stays on your device' }),
   )
     .toBeVisible();
+  await expect(page.getByText('lawful basis')).toHaveCount(0);
 
   await page.getByRole('link', { name: 'Terms', exact: true }).click();
   await expect(
