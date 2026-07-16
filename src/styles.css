@@ -359,7 +359,7 @@ h1 {
 }
 .process-list li {
   display: grid;
-  grid-template-columns: auto 34px 1fr;
+  grid-template-columns: 34px 1fr;
   gap: 1rem;
   position: relative;
   padding: 2rem 1.5rem 2rem 0;
@@ -370,10 +370,6 @@ h1 {
 }
 .process-list li:nth-child(even) {
   padding-left: 1.5rem;
-}
-.step-number {
-  font-weight: 950;
-  color: var(--red);
 }
 .step-icon {
   font-size: 1.6rem;
@@ -424,7 +420,7 @@ h1 {
   border-top: 2px solid var(--ink);
   padding: 2rem clamp(1rem, 4vw, 4rem);
   display: grid;
-  grid-template-columns: minmax(180px, 0.8fr) minmax(300px, 1.2fr) minmax(220px, 0.8fr);
+  grid-template-columns: minmax(180px, 1fr) minmax(300px, auto);
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
@@ -437,7 +433,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 0.75rem 1.35rem;
 }
 .footer-links a {
@@ -454,16 +450,6 @@ h1 {
   width: 27px;
   height: 27px;
   object-fit: contain;
-}
-.site-footer p {
-  display: flex;
-  gap: 0.4rem;
-  margin: 0;
-  align-items: center;
-}
-.footer-meta {
-  justify-self: end;
-  max-width: 300px;
 }
 /* Allocation workflow */
 .tool-main {
@@ -556,6 +542,14 @@ h1 {
 }
 .file-meta strong {
   display: block;
+}
+.validation-area {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--line);
+}
+.validation-area > h3 {
+  margin-top: 0;
 }
 .stats-grid {
   display: grid;
@@ -851,9 +845,6 @@ input.capacity {
   }
   .footer-links {
     justify-content: flex-start;
-  }
-  .footer-meta {
-    justify-self: start;
   }
   .stats-grid,
   .review-grid,

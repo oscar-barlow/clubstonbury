@@ -5,10 +5,10 @@
 <aside class:compact class="privacy-notice" aria-labelledby="privacy-heading">
   <span class="shield" aria-hidden="true">✓</span>
   <div>
-    <h2 id="privacy-heading">Your data never leaves this device.</h2>
+    <h2 id="privacy-heading">Your allocation data never leaves this device.</h2>
     <p>
-      Clubstonbury processes your CSV entirely inside this browser. There are no uploads, accounts,
-      cookies, analytics or tracking. After the app has been cached, you can work offline.
+      Application files and results are never uploaded. There are no accounts or cookies. After the
+      app has been cached, you can work offline.
     </p>
     <a href="/privacy">Read how privacy by design works</a>
   </div>

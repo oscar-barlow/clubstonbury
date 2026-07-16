@@ -224,32 +224,31 @@
     <div class="page-width">
       <p class="eyebrow">The allocation tent</p>
       <h1>Allocate club places</h1>
-      <p class="strapline">Fairness without Stress</p>
       <p>Load the applications, set each club’s capacity and run a reproducible three-round lottery entirely on this device.</p>
     </div>
   </section>
 
   <div class="tool-wrap">
     <nav class="workflow-steps" aria-label="Allocation steps">
-      <a href="#upload"><span>1</span> Upload</a><a href="#validate"><span>2</span> Validate</a>
-      <a href="#capacities"><span>3</span> Capacities</a><a href="#review"><span>4</span> Review</a>
-      <a href="#results"><span>5</span> Results</a><a href="#download"><span>6</span> Download</a>
+      <a href="#applications"><span>1</span> Applications</a>
+      <a href="#capacities"><span>2</span> Capacities</a>
+      <a href="#review"><span>3</span> Review and run</a>
+      <a href="#results"><span>4</span> Results</a>
+      <a href="#download"><span>5</span> Download</a>
     </nav>
 
     <PrivacyNotice compact />
     <p class="sr-status" aria-live="polite">{liveMessage}</p>
 
-    <section class="panel" id="upload" aria-labelledby="upload-heading">
-      <div class="panel-head"><span class="panel-number">1</span><div><h2 id="upload-heading">Upload applications</h2><p>Select the exported application CSV. It is read into memory, never uploaded.</p></div></div>
+    <section class="panel" id="applications" aria-labelledby="applications-heading">
+      <div class="panel-head"><span class="panel-number">1</span><div><h2 id="applications-heading">Upload and validate applications</h2><p>Select the exported application CSV. It is read into memory, never uploaded.</p></div></div>
       <div class="dropzone">
         <label class="field-label" for="application-file">Application CSV</label><br />
         <input bind:this={applicationFileInput} id="application-file" data-testid="application-file" type="file" accept=".csv,text/csv" on:change={loadApplicationFile} />
       </div>
       {#if fileName}<div class="file-meta"><span><strong>File</strong>{fileName}</span><span><strong>Size</strong>{formatBytes(fileSize)}</span></div>{/if}
-    </section>
-
-    <section class="panel" id="validate" aria-labelledby="validate-heading">
-      <div class="panel-head"><span class="panel-number">2</span><div><h2 id="validate-heading">Validate applications</h2><p>Errors must be corrected in the source file. Warnings require review.</p></div></div>
+      <div class="validation-area">
+        <h3>Validation</h3>
       {#if !validation}
         <p class="notice">Upload an application CSV to begin validation.</p>
       {:else}
@@ -282,10 +281,11 @@
         {/if}
         <p class="notice"><strong>Eligibility assumption:</strong> uploaded choices must already have been checked for year and other eligibility rules. Clubstonbury never infers eligibility from an ID.</p>
       {/if}
+      </div>
     </section>
 
     <section class="panel" id="capacities" aria-labelledby="capacities-heading">
-      <div class="panel-head"><span class="panel-number">3</span><div><h2 id="capacities-heading">Set club capacities</h2><p>Enter each capacity, or import a separate two-column club and capacity file.</p></div></div>
+      <div class="panel-head"><span class="panel-number">2</span><div><h2 id="capacities-heading">Set club capacities</h2><p>Enter each capacity, or import a separate two-column club and capacity file.</p></div></div>
       {#if !validation || errors.length || unresolvedConflicts.length}
         <p class="notice">Complete validation and club-name review before setting capacities.</p>
       {:else}
@@ -305,7 +305,7 @@
     </section>
 
     <section class="panel" id="review" aria-labelledby="review-heading">
-      <div class="panel-head"><span class="panel-number">4</span><div><h2 id="review-heading">Review lottery settings</h2><p>These values, together with the source CSV, reproduce the result.</p></div></div>
+      <div class="panel-head"><span class="panel-number">3</span><div><h2 id="review-heading">Review settings and run</h2><p>These values, together with the source CSV, reproduce the result.</p></div></div>
       <div class="field"><label for="seed">Random seed</label><div class="seed-row"><input bind:this={seedInput} id="seed" data-testid="seed-input" value={seed} on:input={(event) => { seed = event.currentTarget.value; invalidateResult(); }} /><button class="button" type="button" on:click={copySeed} aria-label="Copy random seed">Copy seed</button><button class="button secondary" type="button" on:click={generateSeed}>New seed</button></div><small>Generated with browser cryptography. The same seed and inputs always give the same result.</small></div>
       <div class="review-grid">
         <div class="review-item"><span>Valid applications</span><strong>{validation?.applications.length ?? 0}</strong></div>
@@ -321,7 +321,7 @@
     </section>
 
     <section class="panel" id="results" aria-labelledby="results-heading">
-      <div class="panel-head"><span class="panel-number">5</span><div><h2 id="results-heading" tabindex="-1">Review results</h2><p>Ticket totals and waiting lists from the most recent run.</p></div></div>
+      <div class="panel-head"><span class="panel-number">4</span><div><h2 id="results-heading" tabindex="-1">Review results</h2><p>Ticket totals and waiting lists from the most recent run.</p></div></div>
       {#if !result || !metrics}<p class="notice">Run the lottery to see results.</p>{:else}
         {#if resultsStale}<p class="stale-box"><strong>These results are out of date.</strong> Do not use them until the lottery is rerun.</p>{/if}
         <div class="result-band"><div class="stat green"><strong>{metrics.totalAllocated}</strong><span>tickets allocated</span></div><div class="stat yellow"><strong>{metrics.totalUnused}</strong><span>tickets remaining</span></div><div class="stat red"><strong>{metrics.noClub}</strong><span>children with no club</span></div><div class="stat"><strong>{metrics.firstChoice}</strong><span>received first choice</span></div></div>
@@ -331,7 +331,7 @@
     </section>
 
     <section class="panel" id="download" aria-labelledby="download-heading">
-      <div class="panel-head"><span class="panel-number">6</span><div><h2 id="download-heading">Download and clear</h2><p>The archive contains allocations, club totals, waiting lists, unallocated children and the run manifest.</p></div></div>
+      <div class="panel-head"><span class="panel-number">5</span><div><h2 id="download-heading">Download and clear</h2><p>The archive contains allocations, club totals, waiting lists, unallocated children and the run manifest.</p></div></div>
       {#if manifest && !resultsStale}
         <button class="button primary" data-testid="download-results" type="button" on:click={downloadArchive}>Download {archiveName}</button>
         <h3>Reproducing this lottery</h3><p>Keep the original source CSV and use the capacities, seed and algorithm below. The run time records when the button was pressed; it does not affect allocation.</p>
@@ -340,7 +340,7 @@ Algorithm: {manifest.algorithmVersion}
 Input CSV SHA-256: {manifest.inputCsvSha256}
 Capacities: {JSON.stringify(manifest.capacities, null, 2)}</pre>
       {:else}<p class="notice">A current lottery result is required before the results archive can be downloaded.</p>{/if}
-      <div class="notice"><strong>Returned tickets and mop-up:</strong> work down the original club waiting list without reordering it. Only after that list is exhausted should remaining places be offered to late applicants or children making new choices, first come, first served.</div>
+      <div class="notice"><strong>Returned places and mop-up:</strong> the archive includes a reproducible waiting list for each club. The school decides how to use it and is responsible for subsequent offers. Clubstonbury's published mop-up workflow handles late applicants or new choices first come, first served after the original waiting-list process.</div>
       <button class="button danger" type="button" on:click={clearAll}>Clear all data</button>
     </section>
   </div>

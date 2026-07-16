@@ -4,65 +4,51 @@
 
 <svelte:head>
   <title>Privacy | Clubstonbury</title>
-  <meta name="description" content="How Clubstonbury keeps application data private on your device and supports UK GDPR compliance." />
+  <meta name="description" content="How Clubstonbury processes application data privately inside your browser without uploading it." />
 </svelte:head>
 
 <PolicyPage
   eyebrow="Privacy by design"
-  title="Private here. Pseudonymous at school."
-  intro="Clubstonbury is deliberately built so the site operator never receives your application CSV or allocation results. Processing stays in your browser, and the allocation file should use opaque IDs instead of children's names."
+  title="Your allocation stays on your device"
+  intro="Clubstonbury is a static website with no application server or database. Your CSV is read, checked and processed inside your browser, so the site operator never receives your application data or results."
   reviewed="16 July 2026"
 >
   <section>
     <div class="policy-callout">
-      <h2>Your application data never leaves this device</h2>
-      <p>The browser reads the CSV into memory, validates it, runs the lottery and creates the result ZIP locally. Running an allocation makes no network requests. Clubstonbury has no backend, accounts, database or server-side upload.</p>
+      <h2>Files are processed locally, not uploaded</h2>
+      <p>When you select a CSV, the browser reads it directly into memory. Validation, the seeded lottery, waiting lists and the result ZIP are all produced on this device. The allocation workflow does not upload its inputs or outputs.</p>
     </div>
   </section>
 
   <section>
-    <h2>What the site does and does not collect</h2>
+    <h2>What happens in the browser</h2>
     <div class="policy-grid">
-      <div><h3>Processed locally</h3><ul><li>Opaque child IDs and submission timestamps</li><li>Ranked club choices and club capacities</li><li>Seeds, allocations and waiting lists</li></ul></div>
-      <div><h3>Not collected by Clubstonbury</h3><ul><li>Uploaded CSV contents or result files</li><li>Names, email addresses or family profiles</li><li>Cookies, analytics or tracking identifiers</li><li>Error reports, advertising data or browser storage records</li></ul></div>
+      <div><h3>Used for the current session</h3><ul><li>Opaque child IDs and submission timestamps</li><li>Club choices and capacities</li><li>The seed, allocations and waiting lists</li></ul></div>
+      <div><h3>Never sent to Clubstonbury</h3><ul><li>The contents of selected files</li><li>Allocation results or downloaded ZIP files</li><li>Names, email addresses or family profiles</li><li>Anything entered into the allocation workflow</li></ul></div>
     </div>
-    <p>The first visit still requests the static website from its hosting provider. Like most web hosting, that provider may process ordinary request metadata such as an IP address. It does not receive the CSV selected in your browser.</p>
   </section>
 
   <section>
-    <h2>Anonymous to Clubstonbury does not always mean anonymous to the school</h2>
-    <p>Use a random, opaque ID for each child and keep the separate ID-to-name lookup under the school's control. Clubstonbury cannot identify a child because it never receives either file.</p>
-    <div class="policy-warning"><strong>Important:</strong> if the school can use a separate lookup to reconnect an ID to a child, the allocation data is <em>pseudonymised</em>, not fully anonymised. UK data protection law still applies to that data and to the lookup. Keep them separate and protect the lookup with appropriate access controls.</div>
+    <h2>The algorithm does not need children's identities</h2>
+    <p>Clubstonbury works with opaque IDs. It does not ask for or use a child's name, email address, contact details or profile. An ID is used only to give that application a reproducible lottery position and to label its results.</p>
+    <p>Because neither the selected CSV nor an identity list is sent to Clubstonbury, the site operator cannot connect an allocation ID to a particular child.</p>
   </section>
 
   <section>
-    <h2>How the design supports UK GDPR compliance</h2>
-    <p>The local-only workflow helps schools apply data minimisation, data protection by design and appropriate security. The tool needs only an opaque ID, timestamp and club choices; it does not need a child's name, contact details, year group or profile.</p>
-    <p>Using Clubstonbury is not, by itself, a complete guarantee of GDPR compliance. The school remains the data controller and is responsible for the wider process.</p>
-    <ul>
-      <li>Choose and document an appropriate lawful basis.</li>
-      <li>Give families an accurate privacy notice for the survey and allocation process.</li>
-      <li>Collect only information needed for club allocation.</li>
-      <li>Keep the ID lookup separate, access-controlled and encrypted where appropriate.</li>
-      <li>Set retention periods for survey responses, mappings and result archives, then delete them securely.</li>
-      <li>Handle accuracy, access and other data-subject rights through the school's normal procedures.</li>
-      <li>Consult the school's data protection officer and complete a DPIA where the circumstances require one.</li>
-    </ul>
+    <h2>No accounts, cookies or personal tracking</h2>
+    <p>The site has no sign-in, user accounts, advertising or error-reporting service. Clubstonbury does not save selected data or results to local storage or a browser database.</p>
+    <p>Clubstonbury uses <a href="https://www.simpleanalytics.com/" rel="noreferrer">Simple Analytics</a> to understand aggregate site use. The browser loads its third-party script, or a small image when JavaScript is disabled. It records metrics such as the page visited, referrer, time zone, browser and device category, language, screen dimensions and scroll depth.</p>
+    <p>Simple Analytics states that it uses no cookies, local storage, fingerprinting or user/device identifiers, and that IP addresses are discarded rather than stored. The site operator sees aggregate traffic reports, not individual visitor profiles. Clubstonbury does not send selected CSV contents, opaque child IDs, choices, capacities, seeds or allocation results through analytics. See <a href="https://docs.simpleanalytics.com/data-collection" rel="noreferrer">Simple Analytics' data-collection documentation</a> for details.</p>
   </section>
 
   <section>
-    <h2>Memory, downloads and offline use</h2>
-    <p>Uploaded data remains in page memory only. Refreshing or closing the page discards it, and <strong>Clear all data</strong> removes the current in-memory workflow. Downloaded ZIP files are under the administrator's control and should be stored according to school policy.</p>
-    <p>A service worker caches the application code and local assets so the tool can work offline. It does not cache uploaded CSV contents or results.</p>
+    <h2>Temporary memory and local downloads</h2>
+    <p>Selected data remains in page memory only. Refreshing or closing the page discards it, and <strong>Clear all data</strong> removes the current workflow from memory. The result ZIP is created locally and goes straight to the browser's normal download location.</p>
+    <p>A service worker caches only the application code and bundled assets so the tool can work offline. It never caches selected CSV contents or allocation results.</p>
   </section>
 
   <section>
-    <h2>Authoritative guidance</h2>
-    <p>This page explains Clubstonbury's design and is not legal advice. For current requirements, use the Information Commissioner's Office guidance:</p>
-    <ul>
-      <li><a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/guide-to-accountability-and-governance/data-protection-by-design-and-by-default/" rel="noreferrer">Data protection by design and by default</a></li>
-      <li><a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-sharing/anonymisation/pseudonymisation/" rel="noreferrer">Pseudonymisation</a></li>
-      <li><a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-protection-principles/a-guide-to-the-data-protection-principles/data-minimisation/" rel="noreferrer">Data minimisation</a></li>
-    </ul>
+    <h2>The design is open to inspection</h2>
+    <p>Clubstonbury is open-source software. Its browser-only allocation, CSV handling, result generation and offline cache can all be inspected in the <a href="https://github.com/oscar-barlow/clubstonbury" rel="noreferrer">public GitHub repository</a>.</p>
   </section>
 </PolicyPage>

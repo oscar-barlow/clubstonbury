@@ -20,10 +20,65 @@ async function completeAllocation(page: import('@playwright/test').Page): Promis
 test('home-to-download workflow creates the expected timestamped ZIP', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1, name: 'Clubstonbury' })).toBeVisible();
-  await expect(page.getByText('Fairness without Stress').first()).toBeVisible();
+  await expect(page.getByRole('heading', {
+    name: 'Clubs matter. The stampede doesn’t have to.',
+  })).toBeVisible();
+  await expect(page.getByText(/important part of the school experience/u)).toBeVisible();
+  await expect(page.getByText(/school staff to manage the rush/u)).toBeVisible();
+  await expect(
+    page.locator('.hero').getByText(/Families choose up to three clubs for their child/u),
+  )
+    .toBeVisible();
+  expect(await page.locator('#principles h3').allTextContents()).toEqual([
+    'Families get choice',
+    'Rankings matter',
+    'Everyone enters the same lottery',
+    'First tickets first',
+    'Waiting lists are included',
+    'Mop-up is first come, first served',
+  ]);
+  expect((await page.locator('#principles .step-icon').allTextContents()).join('')).not.toMatch(
+    /\d/u,
+  );
+  await expect(page.getByRole('heading', { name: 'Everyone enters the same lottery' }))
+    .toBeVisible();
+  await expect(page.getByText(/removing time pressure and stress for families/u)).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Waiting lists are included' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Mop-up is first come, first served' }))
     .toBeVisible();
-  await page.getByRole('link', { name: 'Start an allocation' }).click();
+  await expect(page.getByRole('heading', { name: 'Create and share the form' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Leave it open', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: '5 easy steps', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Done!', exact: true })).toBeVisible();
+  await expect(page.getByText('Send invoices, and file the allocation data for your records.'))
+    .toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Practical Guides', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', {
+    name: 'Free, fair and private, without another school platform.',
+  })).toBeVisible();
+  await expect(
+    page.getByText(/Schools can use the survey and spreadsheet tools they already have/u),
+  )
+    .toBeVisible();
+  await expect(page.getByText(/produces an allocation archive for the school’s records/u))
+    .toBeVisible();
+  await expect(page.getByText(/No new account, platform or integration is needed/u)).toBeVisible();
+  await expect(page.getByText(/Choose 3 clubs for your child/u)).toHaveCount(0);
+  await expect(page.getByRole('link', { name: 'Try it with demo data' })).toBeVisible();
+  await expect(page.locator('.final-cta').getByRole('link', { name: 'Start an allocation' }))
+    .toBeVisible();
+  await expect(page.getByText('Fairness without Stress')).toHaveCount(0);
+  await expect(page.getByText('Clubstonbury processes your CSV entirely inside this browser.'))
+    .toHaveCount(0);
+  await page.locator('.hero').getByRole('link', { name: 'Start an allocation' }).click();
+  expect(await page.locator('.workflow-steps a').allTextContents()).toEqual([
+    '1 Applications',
+    '2 Capacities',
+    '3 Review and run',
+    '4 Results',
+    '5 Download',
+  ]);
+  expect(await page.locator('.panel-number').allTextContents()).toEqual(['1', '2', '3', '4', '5']);
   await completeAllocation(page);
 
   const downloadPromise = page.waitForEvent('download');

@@ -1,6 +1,6 @@
 # Clubstonbury
 
-**Fairness without Stress** for after-school club allocation.
+A calmer, private way for schools to allocate after-school club places.
 
 Clubstonbury is a browser-only SvelteKit application that allocates limited club places through a
 transparent, reproducible lottery. Families may rank one to three clubs. Every on-time application

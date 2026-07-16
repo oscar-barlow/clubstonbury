@@ -91,13 +91,6 @@
       text-transform: uppercase;
       font-size: 7.6pt;
     }
-    .strap {
-      margin: 1.5mm 0 0;
-      font-family: Georgia, serif;
-      font-size: 12pt;
-      font-style: italic;
-      font-weight: 700;
-    }
     .badge {
       min-width: 31mm;
       padding: 2.5mm;
@@ -300,17 +293,16 @@
           <div>
             <p class="eyebrow">Clubstonbury explained</p>
             <h1>How the lottery works</h1>
-            <p class="strap">Fairness without Stress</p>
           </div>
           <div class="badge">Three rounds.<br />One published method.</div>
         </header>
         <p class="intro">
-          The algorithm gives everybody a chance at one club before anybody gets a second, and
-          everybody a chance at a second before anybody gets a third. Within each round, a seeded
-          lottery decides who is considered first.
+          Clubstonbury puts children into a randomised order, then tries each child's clubs in
+          preference order. It does this once for first places, again for second places, and again
+          for third places.
         </p>
         <section>
-          <h2>What fairness means here</h2>
+          <h2>The rules in plain English</h2>
           <div class="priorities">
             <div class="priority">
               <b>1</b><strong>Equal deadline</strong>Every valid, on-time entry joins the same
@@ -357,19 +349,17 @@
           <section class="panel">
             <h2>A repeatable random order</h2>
             <p>
-              For each eligible child in each round, Clubstonbury calculates a SHA-256 digest from:
-            </p>
-            <div class="hash">
-              algorithm version : seed : round : round number : child : opaque child ID
-            </div>
-            <p>
-              Sorting these digests creates the round's lottery order. A different round number
-              creates a fresh order. The child ID breaks the extraordinarily unlikely case of equal
-              digests.
+              Each round uses a fresh randomised order. The saved seed lets Clubstonbury recreate
+              those same orders exactly if the result is ever questioned.
             </p>
             <p>
-              <strong>Not included:</strong> name, timestamp, CSV row, number of choices, existing
-              choice rank or personal characteristics.
+              When a child's turn arrives, their first choice is tried first. If it is full, their
+              second choice is tried, then their third. The algorithm stops for that round as soon
+              as it finds an available place.
+            </p>
+            <p>
+              <strong>What does not affect the random order:</strong> name, submission time, CSV row,
+              number of choices, choice rank or personal characteristics.
             </p>
           </section>
         </div>
@@ -380,7 +370,7 @@
               <span class="round-num">1</span><h3>First place</h3>
               <ul>
                 <li>Every child is eligible.</li>
-                <li>Use round 1 lottery order.</li>
+                <li>Use round 1's randomised order.</li>
                 <li>
                   Try their requested clubs in order of preference until finding one that is open.
                 </li>
@@ -391,7 +381,7 @@
               <span class="round-num">2</span><h3>Second place</h3>
               <ul>
                 <li>Only children with exactly one place are eligible.</li>
-                <li>Create a separate round 2 order.</li>
+                <li>Create a fresh randomised order.</li>
                 <li>Try remaining requested clubs in preference order.</li>
                 <li>Stop after at most one more.</li>
               </ul>
@@ -400,7 +390,7 @@
               <span class="round-num">3</span><h3>Third place</h3>
               <ul>
                 <li>Only children with exactly two places are eligible.</li>
-                <li>Create a separate round 3 order.</li>
+                <li>Create a fresh randomised order.</li>
                 <li>Try the last unallocated requested club.</li>
                 <li>Stop after at most one more.</li>
               </ul>
@@ -423,13 +413,14 @@
         <header class="masthead">
           <div>
             <p class="eyebrow">A worked example</p>
-            <h1>Four children, four places</h1>
+            <h1>Randomised order, preference order</h1>
           </div>
-          <div class="badge">Seeded order:<br />B, C, A, D</div>
+          <div class="badge">Round 1 order:<br />B, C, A, D</div>
         </header>
         <p>
-          Suppose Football has 1 place, Drama has 2 and Coding has 1. Round 1's hash order is B, C,
-          A, D:
+          Suppose Football has 1 place, Drama has 2 and Coding has 1. Clubstonbury randomly puts the
+          children in the order B, C, A, D for round 1, then tries each child's choices in preference
+          order:
         </p>
         <table class="worked">
           <thead>
@@ -472,85 +463,56 @@
           rounds 2 or 3. A's lower-ranked Drama choice helped A; ranking it did not change A's
           chance at Football.
         </p>
-        <div class="two-col" style="margin-top: 5mm">
-          <section class="panel red">
-            <h2>Waiting lists</h2>
-            <p>
-              After all three rounds, each unsuccessful request becomes an entry on that club's
-              waiting list. Each club gets its own seeded SHA-256 order.
-            </p>
-            <div class="queue">
-              <span class="person done">Offer</span><span class="arrow">&gt;</span><span
-                class="person"
-              >1. next</span><span class="arrow">&gt;</span><span class="person">2.</span><span
-                class="arrow"
-              >&gt;</span><span class="person">3.</span>
-            </div>
-            <ul>
-              <li>A successfully allocated request is excluded.</li>
-              <li>
-                Original choice rank and current allocation count appear for context, but do not
-                change waitlist position.
-              </li>
-              <li>If a place is returned, use the next eligible child without reordering.</li>
-            </ul>
-          </section>
-          <section class="panel">
-            <h2>Then mop-up</h2>
-            <p>
-              The deterministic waiting list protects the original applicants. Only after a club's
-              original list is exhausted should leftover places enter mop-up.
-            </p>
-            <div class="warning">
-              <strong>Mop-up is first come, first served.</strong> Offer residual places to late
-              applicants or children making new choices in the order those requests arrive. Do not
-              rerun the original lottery to add them.
-            </div>
-          </section>
+        <div class="callout">
+          <strong>The algorithm in one line:</strong> randomised child order; clubs tried in each
+          child's preference order.
         </div>
         <section class="panel red" style="margin-top: 5mm">
-          <h2>Properties you can check</h2>
-          <div class="two-col">
-            <ul>
-              <li>
-                <strong>Preference-order safe:</strong> a lower-ranked choice is considered only
-                after higher-ranked choices are unavailable at that turn.
-              </li>
-              <li>
-                <strong>No choice-count bonus:</strong> listing fewer clubs does not improve
-                priority.
-              </li>
-              <li>
-                <strong>No timestamp race:</strong> all on-time applications are treated equally.
-              </li>
-            </ul>
-            <ul>
-              <li>
-                <strong>Capacity-safe:</strong> remaining capacity is checked before every
-                allocation.
-              </li>
-              <li><strong>Requested clubs only:</strong> no automatic substitute is invented.</li>
-              <li>
-                <strong>Reproducible:</strong> the same inputs, seed and version give the same
-                results.
-              </li>
-            </ul>
+          <h2>What happens after everybody has been considered once?</h2>
+          <div class="rounds">
+            <div class="round">
+              <span class="round-num">2</span><h3>Try for a second club</h3>
+              <p>Children with exactly one club are put into a fresh randomised order. Their remaining choices are tried in preference order.</p>
+            </div>
+            <div class="round">
+              <span class="round-num">3</span><h3>Try for a third club</h3>
+              <p>Children with exactly two clubs are put into another randomised order. Their remaining choice is tried.</p>
+            </div>
+            <div class="round">
+              <span class="round-num">↻</span><h3>Create waiting lists</h3>
+              <p>Every requested club a child did not receive is included on that club's reproducible waiting list. Schools decide how to use it.</p>
+            </div>
           </div>
         </section>
-        <section class="panel" style="margin-top: 5mm">
-          <h2>Reproduce and audit a run</h2>
-          <div class="audit">
-            <div><strong>1</strong><br />Prepared applications CSV</div>
-            <div><strong>2</strong><br />Confirmed club capacities</div>
-            <div><strong>3</strong><br />Exact run seed</div>
-            <div><strong>4</strong><br />Algorithm version</div>
-          </div>
-          <p>
-            Keep the downloaded result ZIP. Its manifest contains the seed, capacities, algorithm
-            and product versions, run time, warning record and SHA-256 hash of the source CSV. The
-            timestamp documents when the button was pressed; it does not affect the allocation.
-          </p>
-        </section>
+        <div class="two-col" style="margin-top: 5mm">
+          <section class="panel">
+            <h2>Rules that stay the same</h2>
+            <ul>
+              <li>A club is allocated only while it has capacity.</li>
+              <li>A child receives only clubs they requested.</li>
+              <li>Lower-ranked choices are tried only after higher-ranked choices are unavailable.</li>
+              <li>Submission time and CSV row order do not affect the random order.</li>
+            </ul>
+            <div class="warning">
+              <strong>Mop-up is first come, first served.</strong> In the published workflow, late or
+              changed requests are handled after the original allocation and waiting-list process.
+            </div>
+          </section>
+          <section class="panel red">
+            <h2>Rerun a questioned result</h2>
+            <p>Keep these four things together:</p>
+            <div class="audit">
+              <div><strong>1</strong><br />Applications CSV</div>
+              <div><strong>2</strong><br />Club capacities</div>
+              <div><strong>3</strong><br />Run seed</div>
+              <div><strong>4</strong><br />Algorithm version</div>
+            </div>
+            <p>
+              Put them back into Clubstonbury to reproduce the same random orders and allocations.
+              This lets an administrator demonstrate that a challenged result has not changed.
+            </p>
+          </section>
+        </div>
         <div class="callout small">
           <strong>Scope:</strong> Clubstonbury applies this published model; it does not decide
           eligibility or legal priority. The administrator must confirm the model suits the school's
@@ -559,7 +521,7 @@
         </div>
       </div>
       <footer class="page-footer">
-        <span>clubstonbury | Fairness without Stress</span><span>Algorithm guide | 2 of 2</span>
+        <span>clubstonbury</span><span>Algorithm guide | 2 of 2</span>
       </footer>
     </section>
   </body>

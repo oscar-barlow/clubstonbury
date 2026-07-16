@@ -1,25 +1,24 @@
 <script lang="ts">
   import PrivacyNotice from '$lib/components/PrivacyNotice.svelte';
 
-  const steps = [
-    { number: '01', icon: '≡', title: 'Choose the lineup', text: 'Families choose one to three clubs and rank them in genuine preference order.' },
-    { number: '02', icon: '◎', title: 'Everyone enters the same lottery', text: 'Every valid application received before the deadline is treated equally. The first morning has no advantage over the final day.' },
-    { number: '03', icon: '①', title: 'First tickets first', text: 'Every child is considered for one club before anyone is considered for a second, then a third.' },
-    { number: '04', icon: '✓', title: 'Rankings matter', text: 'Choices are considered in order of preference. A lower-ranked choice is considered only when higher-ranked choices are unavailable, so ranking another choice cannot harm a higher-ranked choice.' },
-    { number: '05', icon: '↻', title: 'Waiting lists handle returns', text: 'If a ticket is declined, the next child on that club’s deterministic waiting list can be offered the place.' },
-    { number: '06', icon: '◷', title: 'Mop-up is first come, first served', text: 'After original waiting lists are exhausted, any remaining places are offered to late applicants in the order they apply.' }
+  const principles = [
+    { icon: '≡', title: 'Families get choice', text: 'Families choose up to three clubs for their child, ranked in preference order.' },
+    { icon: '✓', title: 'Rankings matter', text: 'Choices are considered in order of preference. A lower-ranked choice is considered only when higher-ranked choices are unavailable, so ranking another choice cannot harm a higher-ranked choice.' },
+    { icon: '◎', title: 'Everyone enters the same lottery', text: 'Every valid application received before the deadline is treated equally. Applying on the first morning gives no advantage over applying on the final day, removing time pressure and stress for families.' },
+    { icon: '◆', title: 'First tickets first', text: 'Every child is considered for one club before anyone is considered for a second, then a third.' },
+    { icon: '↻', title: 'Waiting lists are included', text: 'The results include a deterministic waiting list for each club. If a place is declined, administrators can offer it to the next child on that list.' },
+    { icon: '◷', title: 'Mop-up is first come, first served', text: 'For places a school puts into mop-up, late or changed applications are handled in the order they arrive.' }
   ];
 </script>
 
-<svelte:head><title>Clubstonbury | Fairness without Stress</title></svelte:head>
+<svelte:head><title>Clubstonbury</title></svelte:head>
 
 <main id="main">
   <section class="hero">
     <div class="hero-copy">
       <p class="eyebrow">After-school club allocation</p>
       <h1>Clubstonbury</h1>
-      <p class="strapline">Fairness without Stress</p>
-      <p class="lede">Choose 3 clubs for your child and enter the lottery. The Clubstonbury algorithm allocates places fairly. Everyone who applies before the deadline is treated equally.</p>
+      <p class="lede">Families choose up to three clubs for their child and enter the lottery. The Clubstonbury algorithm allocates places fairly. Everyone who applies before the deadline is treated equally.</p>
       <a class="button primary" href="/allocate">Start an allocation <span aria-hidden="true">→</span></a>
     </div>
     <div class="festival-scene" aria-hidden="true">
@@ -33,33 +32,33 @@
 
   <div class="page-width privacy-wrap"><PrivacyNotice /></div>
 
-  <section class="process page-width" aria-labelledby="process-heading">
+  <section class="process page-width" id="principles" aria-labelledby="process-heading">
     <div class="section-heading">
-      <p class="eyebrow">How it works</p>
-      <h2 id="process-heading">A clear route to fairer club places</h2>
-      <p>No race to submit. No hidden weighting. Just three transparent rounds.</p>
+      <p class="eyebrow">Principles</p>
+      <h2 id="process-heading">Clubs matter. The stampede doesn’t have to.</h2>
+      <p>After-school clubs are an important part of the school experience. But first-come, first-served booking can create a stampede, putting families under pressure and leaving school staff to manage the rush.</p>
     </div>
-    <ol class="process-list">
-      {#each steps as step}
+    <ul class="process-list">
+      {#each principles as principle}
         <li>
-          <div class="step-number">{step.number}</div><span class="step-icon" aria-hidden="true">{step.icon}</span>
-          <div><h3>{step.title}</h3><p>{step.text}</p></div>
+          <span class="step-icon" aria-hidden="true">{principle.icon}</span>
+          <div><h3>{principle.title}</h3><p>{principle.text}</p></div>
         </li>
       {/each}
-    </ol>
+    </ul>
   </section>
 
   <section class="term-timeline page-width" aria-labelledby="timeline-heading">
     <div class="timeline-heading">
-      <div><p class="eyebrow">A typical term</p><h2 id="timeline-heading">From preferences to the end of term</h2></div>
-      <p>Families can submit their preferences through a familiar tool such as Google Forms or SurveyMonkey. Configure the form for one to three ranked choices, then prepare its CSV export for Clubstonbury.</p>
+      <h2 id="timeline-heading">5 easy steps</h2>
+      <p>Schools can use the survey and spreadsheet tools they already have. Families can submit their preferences through Google Forms or SurveyMonkey, then Clubstonbury reads the CSV export. No new account, platform or integration is needed.</p>
     </div>
     <ol class="timeline-list">
-      <li><span>01</span><h3>Open the form</h3><p>Share the preferences form with every eligible family at the same time.</p></li>
-      <li><span>02</span><h3>Leave it open for two weeks</h3><p>Families can respond at any point in the window. Applying earlier gives no advantage.</p></li>
+      <li><span>01</span><h3>Create and share the form</h3><p>Share the preferences form with every eligible family at the same time.</p></li>
+      <li><span>02</span><h3>Leave it open</h3><p>Families can respond at any point in the window. Applying earlier gives no advantage.</p></li>
       <li><span>03</span><h3>Run the allocation</h3><p>Export the responses, check the CSV, enter capacities and run the seeded lottery.</p></li>
-      <li><span>04</span><h3>Do the mop-up</h3><p>Work through original waiting lists first, then offer remaining places first come, first served.</p></li>
-      <li><span>05</span><h3>Term ends</h3><p>Keep the timestamped results archive as the audit record, then begin fresh next term.</p></li>
+      <li><span>04</span><h3>Do the mop-up</h3><p>Decide how to use the generated waiting lists, then handle any mop-up places first come, first served.</p></li>
+      <li><span>05</span><h3>Done!</h3><p>Send invoices, and file the allocation data for your records.</p></li>
     </ol>
   </section>
 
@@ -67,16 +66,16 @@
     <div class="page-width guides-inner">
       <div class="guides-intro">
         <p class="eyebrow">Print and share</p>
-        <h2 id="guides-heading">Practical guides for your allocation</h2>
+        <h2 id="guides-heading">Practical Guides</h2>
         <p>Two concise, illustrated guides for planning the process, explaining the lottery and keeping a defensible audit trail.</p>
       </div>
       <div class="guide-list">
         <article class="guide-item">
-          <div><p class="guide-meta">Administrator guide · 2-page PDF</p><h3>Run a fair club allocation</h3><p>Set up the survey, pseudonymise the export, prepare capacities, run the tool and securely join names back into the results.</p></div>
+          <div><p class="guide-meta">Administrator guide · 2-page PDF</p><h3>5 Steps to run a club allocation</h3><p>Set up the survey, pseudonymise the export, prepare capacities, run the tool and securely join names back into the results.</p></div>
           <a class="button" href="/guides/clubstonbury-admin-guide.pdf" download>Download administrator guide <span aria-hidden="true">↓</span></a>
         </article>
         <article class="guide-item">
-          <div><p class="guide-meta">Algorithm guide · 2-page PDF</p><h3>How the lottery works</h3><p>See the fairness priorities, seeded three-round process, worked example, waiting lists and reproducible audit record.</p></div>
+          <div><p class="guide-meta">Algorithm guide · 2-page PDF</p><h3>How the lottery works</h3><p>See how children are put into a randomised order and their clubs are tried in preference order, across up to three rounds.</p></div>
           <a class="button" href="/guides/clubstonbury-algorithm-guide.pdf" download>Download algorithm guide <span aria-hidden="true">↓</span></a>
         </article>
       </div>
@@ -85,14 +84,17 @@
 
   <section class="fairness-band">
     <div class="page-width fairness-inner">
-      <div><p class="eyebrow">The fair-play promise</p><h2>Lower-ranked choices cannot harm higher-ranked choices.</h2></div>
-      <p>Lottery position depends only on the child’s opaque ID, the published algorithm version and the run seed. Submission times are preserved for the record, but never used to allocate a place.</p>
+      <div><p class="eyebrow">A practical alternative</p><h2>Free, fair and private, without another school platform.</h2></div>
+      <p>Schools keep the forms and spreadsheets they already use. Clubstonbury takes a CSV, runs locally in the browser and produces an allocation archive for the school’s records. No account, subscription or integration is required.</p>
     </div>
   </section>
 
   <section class="page-width final-cta">
-    <div><p class="eyebrow">Ready at the gate?</p><h2>Turn a lineup into fair allocations.</h2></div>
-    <a class="button primary" href="/allocate">Open the allocation tool <span aria-hidden="true">→</span></a>
+    <div><p class="eyebrow">Ready at the gate?</p><h2>Take the rush out of club allocation.</h2></div>
+    <div class="final-actions">
+      <a class="button secondary" href="/demo">Try it with demo data</a>
+      <a class="button primary" href="/allocate">Start an allocation <span aria-hidden="true">→</span></a>
+    </div>
   </section>
 </main>
 
@@ -117,6 +119,7 @@
   .guide-item p { margin: 0; color: var(--muted); }
   .guide-meta { margin-bottom: .45rem !important; color: var(--red) !important; font-size: .76rem; font-weight: 900; text-transform: uppercase; }
   .guide-item .button { max-width: 250px; text-align: center; }
+  .final-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 1rem; }
   @media (max-width: 760px) {
     .term-timeline { padding-block: 0 4rem; }
     .timeline-heading { grid-template-columns: 1fr; gap: 1rem; }
@@ -128,5 +131,7 @@
     .guides-inner { gap: 2rem; }
     .guide-item { gap: 1rem; }
     .guide-item .button { width: 100%; max-width: none; }
+    .final-actions { width: 100%; flex-direction: column; }
+    .final-actions .button { width: 100%; }
   }
 </style>

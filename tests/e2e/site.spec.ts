@@ -2,12 +2,26 @@ import { expect, test } from '@playwright/test';
 
 test('legal pages are linked and the GitHub logo links to the source repository', async ({ page }) => {
   await page.goto('/');
+  await expect(page.locator(
+    'script[src="https://scripts.simpleanalyticscdn.com/latest.js"]',
+  )).toHaveCount(1);
+  await expect(page.getByRole('link', { name: 'How it works' })).toHaveAttribute(
+    'href',
+    '/#principles',
+  );
+  await page.getByRole('link', { name: 'How it works' }).click();
+  await expect(page).toHaveURL(/\/#principles$/u);
+  await expect(page.getByRole('heading', {
+    name: 'Clubs matter. The stampede doesn’t have to.',
+  })).toBeVisible();
 
   await page.getByRole('link', { name: 'Privacy', exact: true }).click();
   await expect(
-    page.getByRole('heading', { level: 1, name: 'Private here. Pseudonymous at school.' }),
+    page.getByRole('heading', { level: 1, name: 'Your allocation stays on your device' }),
   )
     .toBeVisible();
+  await expect(page.getByText('lawful basis')).toHaveCount(0);
+  await expect(page.getByRole('link', { name: 'Simple Analytics' }).first()).toBeVisible();
 
   await page.getByRole('link', { name: 'Terms', exact: true }).click();
   await expect(
