@@ -18,6 +18,7 @@ async function checkDataset(
   applicationsPath: string,
   capacitiesPath: string,
   expectedCount: number,
+  expectEveryChildAllocated = false,
 ) {
   const validation = validateApplications(parseApplicationCsv(await load(applicationsPath)));
   assert.equal(validation.issues.filter((issue) => issue.severity === 'error').length, 0);
@@ -47,6 +48,18 @@ async function checkDataset(
     metrics.noClub + metrics.oneClub + metrics.twoClubs + metrics.threeClubs,
     expectedCount,
   );
+  if (expectEveryChildAllocated) {
+    for (const club of clubs) {
+      const firstChoiceCount = validation.applications.filter((application) =>
+        application.choices[0] === club
+      ).length;
+      assert.ok(
+        capacityImport.values[club] >= firstChoiceCount,
+        `${club} must have room for every first-choice applicant`,
+      );
+    }
+    assert.equal(metrics.noClub, 0);
+  }
 }
 
 Deno.test('downloadable demo applications and capacities form a valid allocation', async () => {
@@ -54,6 +67,7 @@ Deno.test('downloadable demo applications and capacities form a valid allocation
     'static/demo/clubstonbury-demo-applications.csv',
     'static/demo/clubstonbury-demo-capacities.csv',
     18,
+    true,
   );
 });
 
