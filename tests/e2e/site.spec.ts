@@ -5,6 +5,15 @@ test('legal pages are linked and the GitHub logo links to the source repository'
   await expect(page.locator(
     'script[src="https://scripts.simpleanalyticscdn.com/latest.js"]',
   )).toHaveCount(1);
+  await expect(page.getByRole('link', { name: 'How it works' })).toHaveAttribute(
+    'href',
+    '/#principles',
+  );
+  await page.getByRole('link', { name: 'How it works' }).click();
+  await expect(page).toHaveURL(/\/#principles$/u);
+  await expect(page.getByRole('heading', {
+    name: 'Clubs matter. The stampede doesn’t have to.',
+  })).toBeVisible();
 
   await page.getByRole('link', { name: 'Privacy', exact: true }).click();
   await expect(

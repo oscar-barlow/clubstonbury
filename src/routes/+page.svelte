@@ -1,13 +1,13 @@
 <script lang="ts">
   import PrivacyNotice from '$lib/components/PrivacyNotice.svelte';
 
-  const steps = [
-    { number: '01', icon: '≡', title: 'Choose the lineup', text: 'Families choose one to three clubs and rank them in genuine preference order.' },
-    { number: '02', icon: '◎', title: 'Everyone enters the same lottery', text: 'Every valid application received before the deadline is treated equally. Applying on the first morning gives no advantage over applying on the final day, removing time pressure and stress for families.' },
-    { number: '03', icon: '①', title: 'First tickets first', text: 'Every child is considered for one club before anyone is considered for a second, then a third.' },
-    { number: '04', icon: '✓', title: 'Rankings matter', text: 'Choices are considered in order of preference. A lower-ranked choice is considered only when higher-ranked choices are unavailable, so ranking another choice cannot harm a higher-ranked choice.' },
-    { number: '05', icon: '↻', title: 'Waiting lists are included', text: 'The results include a deterministic waiting list for each club. If a place is declined, administrators can offer it to the next child on that list.' },
-    { number: '06', icon: '◷', title: 'Mop-up is first come, first served', text: 'For places a school puts into mop-up, late or changed applications are handled in the order they arrive.' }
+  const principles = [
+    { icon: '≡', title: 'Families get choice', text: 'Families choose up to three clubs for their child, ranked in preference order.' },
+    { icon: '✓', title: 'Rankings matter', text: 'Choices are considered in order of preference. A lower-ranked choice is considered only when higher-ranked choices are unavailable, so ranking another choice cannot harm a higher-ranked choice.' },
+    { icon: '◎', title: 'Everyone enters the same lottery', text: 'Every valid application received before the deadline is treated equally. Applying on the first morning gives no advantage over applying on the final day, removing time pressure and stress for families.' },
+    { icon: '◆', title: 'First tickets first', text: 'Every child is considered for one club before anyone is considered for a second, then a third.' },
+    { icon: '↻', title: 'Waiting lists are included', text: 'The results include a deterministic waiting list for each club. If a place is declined, administrators can offer it to the next child on that list.' },
+    { icon: '◷', title: 'Mop-up is first come, first served', text: 'For places a school puts into mop-up, late or changed applications are handled in the order they arrive.' }
   ];
 </script>
 
@@ -32,25 +32,25 @@
 
   <div class="page-width privacy-wrap"><PrivacyNotice /></div>
 
-  <section class="process page-width" aria-labelledby="process-heading">
+  <section class="process page-width" id="principles" aria-labelledby="process-heading">
     <div class="section-heading">
-      <p class="eyebrow">Why Clubstonbury</p>
+      <p class="eyebrow">Principles</p>
       <h2 id="process-heading">Clubs matter. The stampede doesn’t have to.</h2>
       <p>After-school clubs are an important part of the school experience. But first-come, first-served booking can create a stampede, putting families under pressure and leaving school staff to manage the rush.</p>
     </div>
-    <ol class="process-list">
-      {#each steps as step}
+    <ul class="process-list">
+      {#each principles as principle}
         <li>
-          <div class="step-number">{step.number}</div><span class="step-icon" aria-hidden="true">{step.icon}</span>
-          <div><h3>{step.title}</h3><p>{step.text}</p></div>
+          <span class="step-icon" aria-hidden="true">{principle.icon}</span>
+          <div><h3>{principle.title}</h3><p>{principle.text}</p></div>
         </li>
       {/each}
-    </ol>
+    </ul>
   </section>
 
   <section class="term-timeline page-width" aria-labelledby="timeline-heading">
     <div class="timeline-heading">
-      <div><p class="eyebrow">A typical term</p><h2 id="timeline-heading">From preferences to the end of term</h2></div>
+      <h2 id="timeline-heading">5 easy steps</h2>
       <p>Use the survey and spreadsheet tools your school already has. Families can submit their preferences through Google Forms or SurveyMonkey, then Clubstonbury reads the CSV export. No new account, platform or integration is needed.</p>
     </div>
     <ol class="timeline-list">
@@ -58,7 +58,7 @@
       <li><span>02</span><h3>Leave it open</h3><p>Families can respond at any point in the window. Applying earlier gives no advantage.</p></li>
       <li><span>03</span><h3>Run the allocation</h3><p>Export the responses, check the CSV, enter capacities and run the seeded lottery.</p></li>
       <li><span>04</span><h3>Do the mop-up</h3><p>Decide how to use the generated waiting lists, then handle any mop-up places first come, first served.</p></li>
-      <li><span>05</span><h3>Done! Send invoices, and file the allocation data for your records</h3><p>Keep the source files, capacities and timestamped results archive together so the allocation can be reproduced.</p></li>
+      <li><span>05</span><h3>Done!</h3><p>Send invoices, and file the allocation data for your records.</p></li>
     </ol>
   </section>
 
@@ -91,7 +91,10 @@
 
   <section class="page-width final-cta">
     <div><p class="eyebrow">Ready at the gate?</p><h2>Take the rush out of club allocation.</h2></div>
-    <a class="button primary" href="/allocate">Open the allocation tool <span aria-hidden="true">→</span></a>
+    <div class="final-actions">
+      <a class="button secondary" href="/demo">Try it with demo data</a>
+      <a class="button primary" href="/allocate">Start an allocation <span aria-hidden="true">→</span></a>
+    </div>
   </section>
 </main>
 
@@ -116,6 +119,7 @@
   .guide-item p { margin: 0; color: var(--muted); }
   .guide-meta { margin-bottom: .45rem !important; color: var(--red) !important; font-size: .76rem; font-weight: 900; text-transform: uppercase; }
   .guide-item .button { max-width: 250px; text-align: center; }
+  .final-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 1rem; }
   @media (max-width: 760px) {
     .term-timeline { padding-block: 0 4rem; }
     .timeline-heading { grid-template-columns: 1fr; gap: 1rem; }
@@ -127,5 +131,7 @@
     .guides-inner { gap: 2rem; }
     .guide-item { gap: 1rem; }
     .guide-item .button { width: 100%; max-width: none; }
+    .final-actions { width: 100%; flex-direction: column; }
+    .final-actions .button { width: 100%; }
   }
 </style>
